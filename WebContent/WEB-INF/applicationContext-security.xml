@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<b:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:b="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/security
+       http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+	<http>
+		<intercept-url pattern="/administrativo/**" access="ROLE_ADMIN" />
+		<intercept-url pattern="/auxiliar/**" access="ROLE_AUXILIAR" />
+		<form-login login-page="/login.jsp"
+			always-use-default-target="false" default-target-url="/Home"
+			authentication-failure-url="/login.jsp?erro=1" />
+		<logout />
+		<remember-me />
+	</http>
+	<authentication-manager>
+		<authentication-provider>
+			<!-- <password-encoder hash="md5"/> -->
+			<jdbc-user-service data-source-ref="meuDataSource"
+				authorities-by-username-query="SELECT
+													U.email
+													,	UP.permissao
+												FROM TAB_USUARIO U, TAB_USUARIO_PERMISSAO UP
+												WHERE
+													U.codUsuario = UP.codUsuario
+												AND
+													U.email = ?"
+				users-by-username-query="SELECT
+											U.email
+											,	U.senha
+											,	U.ativo
+										FROM TAB_USUARIO U
+										WHERE
+											U.email = ?" />
+		</authentication-provider>
+	</authentication-manager>
+</b:beans>
