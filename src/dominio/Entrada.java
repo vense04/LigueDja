@@ -35,16 +35,16 @@ public class Entrada implements Serializable {
 	@JoinColumn(name = "codEntrada")
 	private Produto produto;
 
-	public int getCodProduto() {
-		return this.codEntrada;
+	public int getCodEntrada() {
+		return codEntrada;
 	}
 
-	public void setCodProduto(int codEntrada) {
+	public void setCodEntrada(int codEntrada) {
 		this.codEntrada = codEntrada;
 	}
 
 	public Date getData() {
-		return this.data;
+		return data;
 	}
 
 	public void setData(Date data) {
@@ -52,7 +52,7 @@ public class Entrada implements Serializable {
 	}
 
 	public int getQuantidade() {
-		return this.quantidade;
+		return quantidade;
 	}
 
 	public void setQuantidade(int quantidade) {
@@ -60,11 +60,14 @@ public class Entrada implements Serializable {
 	}
 
 	public Produto getProduto() {
-		return this.produto;
+		return produto;
 	}
 
 	public void setProduto(Produto produto) {
 		this.produto = produto;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 }

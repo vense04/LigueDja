@@ -40,13 +40,7 @@ public class InserirCadastroClienteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 		try {
 			Usuario usuar = instanciar(request);
-
-			
 				clienteservico.inserir(usuar);
-			
-
-			
-
 		} catch (Throwable e) {
 			e.printStackTrace();
 			throw new ServletException("Erro no post" + e.getMessage());
@@ -80,8 +74,8 @@ public class InserirCadastroClienteServlet extends HttpServlet {
 			
 			/*
 			auxiliar = req.getParameter("cofsenha");
-			usuar.setConSenha(auxiliar); esse campo tem apenas no formulario mas não tem no banco--verificar se tem a necessidade
-			talvez fazer uma javaScript para comparar se os dois campos são iguais
+			usuar.setConSenha(auxiliar); esse campo tem apenas no formulario mas nï¿½o tem no banco--verificar se tem a necessidade
+			talvez fazer uma javaScript para comparar se os dois campos sï¿½o iguais
 			*/
 			
 			auxiliar = req.getParameter("dtnasc");
@@ -97,7 +91,7 @@ public class InserirCadastroClienteServlet extends HttpServlet {
 			
 		} catch (Throwable e) {
 			e.printStackTrace();
-			throw new ParseException("Erro ao cadastrar um Usuário!", 0);
+			throw new ParseException("Erro ao cadastrar um Usuï¿½rio!", 0);
 
 		}
 		
