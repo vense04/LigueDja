@@ -20,6 +20,10 @@ public class ClienteServico {
 		return usuarioDao.buscaTodos();
 	}
 	
+	public Usuario carregar(int cod) {
+		return usuarioDao.buscaPorCodigo(cod);
+	}
+	
 	public void inserir( Usuario us) throws RuntimeException{
 		try{
 			em.getTransaction().begin();
@@ -41,7 +45,7 @@ public class ClienteServico {
 			if (em.getTransaction().isActive())
 				em.getTransaction().rollback();
 			e.printStackTrace();
-			throw new RuntimeException(" Erro ao Atualizar Cadastro");
+			throw new RuntimeException(" Erro ao Atualizar Cadastro Cliente");
 		}
 	}
 	

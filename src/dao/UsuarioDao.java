@@ -10,6 +10,8 @@ public interface UsuarioDao {
 	
 	public void editar(Usuario Usuario);
 	
+	public Usuario buscaPorCodigo(int cod);
+	
 	public List<Usuario> buscaTodos();
 
 }

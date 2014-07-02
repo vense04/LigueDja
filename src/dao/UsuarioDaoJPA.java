@@ -5,7 +5,6 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import javax.print.DocFlavor.STRING;
 
 import dominio.Usuario;
 
@@ -22,6 +21,9 @@ public class UsuarioDaoJPA implements UsuarioDao {
 	public void editar(Usuario usuario) {
 		em.merge(usuario);
 		
+	}
+	public Usuario buscaPorCodigo(int cod) {
+		return em.find(Usuario.class, cod);
 	}
 	
 	@SuppressWarnings("unchecked")
