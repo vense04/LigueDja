@@ -23,7 +23,7 @@ public class Entrada implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int codEntrada;
+	private int codProduto;
 
 	@Temporal(TemporalType.DATE)
 	private Date data;
@@ -32,15 +32,15 @@ public class Entrada implements Serializable {
 
 	// bi-directional one-to-one association to TabProduto
 	@OneToOne
-	@JoinColumn(name = "codEntrada")
+	@JoinColumn(name = "codProduto")
 	private Produto produto;
 
 	public int getCodEntrada() {
-		return codEntrada;
+		return codProduto;
 	}
 
-	public void setCodEntrada(int codEntrada) {
-		this.codEntrada = codEntrada;
+	public void setCodEntrada(int codProduto) {
+		this.codProduto = codProduto;
 	}
 
 	public Date getData() {
