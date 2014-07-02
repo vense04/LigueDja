@@ -15,12 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 import servico.EntradaServico;
 import dominio.Entrada;
 
-@WebServlet("/secretario/EntradaCRUD")
+@WebServlet("/administrativo/EntradaCRUD")
 public class EntradaCRUD extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static String INSERIR_OU_ALTERAR = "/secretario/entradaeonatoForm.jsp";
-	private static String LISTAR = "/secretario/entradaeonatoListar.jsp";
+	private static String INSERIR_OU_ALTERAR = "/administrativo/admin.jsp";
+	private static String LISTAR = "/administrativo/admin.jsp";
 
 	@Inject
 	private EntradaServico entradaServico;
@@ -91,7 +91,7 @@ public class EntradaCRUD extends HttpServlet {
 			aux = req.getParameter("nome");
 			entrada.setData(sdf.parse(aux));
 		
-			aux = req.getParameter("finalizado");
+			aux = req.getParameter("quantidade");
 			entrada.setQuantidade(Integer.parseInt(aux));
 		} catch (Throwable e) {
 			e.printStackTrace();

@@ -23,7 +23,7 @@ public class Entrada implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int codProduto;
+	private int codEntrada;
 
 	@Temporal(TemporalType.DATE)
 	private Date data;
@@ -36,11 +36,11 @@ public class Entrada implements Serializable {
 	private Produto produto;
 
 	public int getCodEntrada() {
-		return codProduto;
+		return codEntrada;
 	}
 
-	public void setCodEntrada(int codProduto) {
-		this.codProduto = codProduto;
+	public void setCodEntrada(int codEntrada) {
+		this.codEntrada = codEntrada;
 	}
 
 	public Date getData() {
