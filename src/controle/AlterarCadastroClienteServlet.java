@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import servico.ClienteServico;
 import dominio.Usuario;
 
-@WebServlet("/cliente/AlterarCadastroClienteServlet")
+@WebServlet("/AlterarCadastroClienteServlet")
 public class AlterarCadastroClienteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -49,7 +49,8 @@ public class AlterarCadastroClienteServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+			RequestDispatcher rd = request.getRequestDispatcher("/carrinho.jsp");
+			rd.forward(request, response);	
 			
 		}
 	}
@@ -60,10 +61,11 @@ public class AlterarCadastroClienteServlet extends HttpServlet {
 			Usuario usuar = instanciar(request);
 			if(usuar.getCodUsuario()!=null)
 			clienteservico.editar(usuar);
+			System.out.println(usuar);
 
 		} catch (Throwable e) {
 			e.printStackTrace();
-			throw new ServletException("Erro no post" + e.getMessage());
+			throw new ServletException("Erro no post " + e.getMessage());
 
 		}
 

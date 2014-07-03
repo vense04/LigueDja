@@ -54,7 +54,7 @@ $(document).ready(function(){
 		
 		<p>
 			<label>Data de Nascimento:</label> 
-			<input id="datanas" name="dtnasc" value="<c:out value="${us.datNascimento}"/>" class="datanas" type="text" ><span class="alert">*</span>
+			<input id="datanas" name="dtnasc" <fmt:formatDate pattern="dd/MM/yyyy" value="${us.datNascimento }"/>" class="datanas" type="text" ><span class="alert">*</span>
 		</p>
 		<p>
 			<label>Renda:</label> 
