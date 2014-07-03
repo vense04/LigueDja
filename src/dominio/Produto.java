@@ -49,14 +49,6 @@ public class Produto implements Serializable {
 	 */
 	private String nomProduto;
 
-	//bi-directional one-to-one association to TabEntrada
-	/**
-	 * @uml.property  name="tabEntrada"
-	 * @uml.associationEnd  inverse="tabProduto:model.TabEntrada"
-	 */
-	@OneToOne(mappedBy="produto")
-	private Entrada entrada;
-
 	//bi-directional many-to-one association to TabItemPedido
 	/**
 	 * @uml.property  name="tabItemPedidos"
@@ -142,22 +134,6 @@ public class Produto implements Serializable {
 	 */
 	public void setQteEstoque(int qteEstoque) {
 		this.qteEstoque = qteEstoque;
-	}
-
-	/**
-	 * @return
-	 * @uml.property  name="tabEntrada"
-	 */
-	public Entrada getEntrada() {
-		return this.entrada;
-	}
-
-	/**
-	 * @param entrada
-	 * @uml.property  name="tabEntrada"
-	 */
-	public void setEntrada(Entrada entrada) {
-		this.entrada = entrada;
 	}
 
 	public List<ItemPedido> getItemPedidos() {
