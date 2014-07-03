@@ -18,11 +18,7 @@ public class ProdutoServico {
 	private ProdutoDao produtoDao;
 	
 	
-	/**
-	 * Lista os produtos da categoria informada
-	 * @param categoria
-	 * @return List<Produto>
-	 */
+	
 	
 	public List<Produto> listaProdutosPorCategoria(Categoria categoria) {
 		
@@ -35,7 +31,6 @@ public class ProdutoServico {
 	}
 	
 	public Produto getProduto(Integer codProduto) {
-		
 		return produtoDao.buscaPorCodigo(codProduto);
 	}
 

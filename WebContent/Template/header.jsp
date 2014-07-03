@@ -52,7 +52,7 @@
         	<a href="login.jsp"> Login/Registre-se</a> // 
         	<a href="Carrinho">Meu Carrinho <span id="itensCarrinho">${sessionScope.carrinho.quantidadeProdutos()}</span></a> // 
         	<a href="<c:url value="/j_spring_security_logout" />" title="Fazer logout">Logout</a> // 
-			<a href="administrativo/Template/admin.jsp">Administrativo</a> 
+			<a href="administrativo/admin.jsp">Administrativo</a> 
 		</div>
     </div>
 </aside>

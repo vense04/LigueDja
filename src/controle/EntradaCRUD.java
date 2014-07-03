@@ -13,13 +13,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import servico.EntradaServico;
+import servico.ProdutoServico;
 import dominio.Entrada;
 
 @WebServlet("/administrativo/EntradaCRUD")
 public class EntradaCRUD extends HttpServlet {
+	
+	@Inject
+	ProdutoServico produtoDao;
+	
 	private static final long serialVersionUID = 1L;
 
-	private static String INSERIR_OU_ALTERAR = "/administrativo/admin.jsp";
+	private static String INSERIR_OU_ALTERAR = "/administrativo/Template/cadastrarEntrada.jsp";
 	private static String LISTAR = "/administrativo/admin.jsp";
 
 	@Inject
@@ -87,15 +92,18 @@ public class EntradaCRUD extends HttpServlet {
 			aux = req.getParameter("codEntrada");
 			if (aux!=null && !aux.isEmpty())
 				entrada.setCodEntrada(Integer.parseInt(aux));
+			
+			aux = req.getParameter("codProduto");
+			entrada.setProduto(produtoDao.getProduto(Integer.parseInt(aux)));
 
-			aux = req.getParameter("nome");
+			aux = req.getParameter("data");
 			entrada.setData(sdf.parse(aux));
 		
 			aux = req.getParameter("quantidade");
 			entrada.setQuantidade(Integer.parseInt(aux));
 		} catch (Throwable e) {
 			e.printStackTrace();
-			throw new ParseException("Erro ao instanciar um entradaeonato!", 0);
+			throw new ParseException("Erro ao instanciar um entrada!", 0);
 		}
 		return entrada;
 	}

@@ -23,6 +23,9 @@
 <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
 
 
+
+</script>
+
 <!-- The below script Makes IE understand the new html5 tags are there and applies our CSS to it -->
 <!--[if IE]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -123,7 +126,8 @@
 							});
 				});
 	</script>
-	<script type="text/javascript">
+	
+<script type="text/javascript">
 		$("#categorias").on('change',
 						function() {
 							$.get("Teste?codCategoria=" + this.value).done(function(data) {
