@@ -43,8 +43,24 @@ public class Produtos extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if (request.getParameter("categoria") != null) {
-			request.setAttribute("produtos", produto.listaProdutosPorCategoria(categoria.buscaPorCodigo(Integer.parseInt(request.getParameter("categoria")))));
-			RequestDispatcher rd = request.getRequestDispatcher("produtos.jsp");
+			RequestDispatcher rd;
+			if (request.getParameter("ordem") == null) {
+				request.setAttribute("produtos", produto.listaProdutosPorCategoria(categoria.buscaPorCodigo(Integer.parseInt(request.getParameter("categoria")))));
+				rd = request.getRequestDispatcher("produtos.jsp");
+			}
+			else if (request.getParameter("ordem").equalsIgnoreCase("precoDesc")) {
+				request.setAttribute("produtos", produto.listaProdutosPorCategoria(categoria.buscaPorCodigo(Integer.parseInt(request.getParameter("categoria")))));
+				rd = request.getRequestDispatcher("produtos.jsp");			
+			}
+			else if (request.getParameter("ordem").equalsIgnoreCase("maisVendidos")) {
+				request.setAttribute("produtos", produto.listaProdutosPorCategoria(categoria.buscaPorCodigo(Integer.parseInt(request.getParameter("categoria")))));
+				rd = request.getRequestDispatcher("produtos.jsp");
+			}
+			else {
+				request.setAttribute("produtos", produto.listaProdutosPorCategoria(categoria.buscaPorCodigo(Integer.parseInt(request.getParameter("categoria")))));
+				rd = request.getRequestDispatcher("produtos.jsp");
+			}
+			
 			rd.forward(request, response);
 		}
 		else {
