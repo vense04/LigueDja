@@ -42,7 +42,7 @@
         </c:if>
         </div>
         <form action="#" >
-        <select onchange="javascript:addSort();" name="sortBy" id="sortBy">
+        <select name="sortBy" id="sortBy">
             <option value="">Default</option>
             <option value="PriceHiLo">Price (High to Low)</option>
             <option value="PriceLoHi">Price (Low to High)</option>
@@ -74,10 +74,22 @@
         </div>
     </footer>
 </article>
-	
-	
-	
-	
+<script type="text/javascript">
+		$("#sortBy").on('change',
+						function() {
+							$.get("Teste?codCategoria=" + this.value).done(function(data) {
+								$('#produtos').empty();
+								for ( var produto in data["Produtos"]) {
+									$('#produtos').append('<option value=' + data["Produtos"][produto]["codProduto"] + '>'
+																			+ data["Produtos"][produto]["nomProduto"]
+																			+ '</option>');
+												}
+											});
+						});
+		$(document).ready(function() {
+			$('#categorias').change();
+		});
+	</script>
 	<%@ include file="/Template/footer.jsp"%>
 </body>
 </html>
