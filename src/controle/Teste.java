@@ -18,7 +18,7 @@ import servico.ProdutoServico;
 /**
  * Servlet implementation class Teste
  */
-@WebServlet("/administrativo/Teste")
+@WebServlet("/administrativo/entrada/Teste")
 public class Teste extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

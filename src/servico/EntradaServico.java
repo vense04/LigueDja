@@ -19,6 +19,7 @@ public class EntradaServico {
 	public List<Entrada> listarEntradas() {
 		return entradaDao.buscaTodos();
 	}
+
 	public Entrada carregar(int cod) {
 		return entradaDao.buscaPorCodigo(cod);
 	}
@@ -26,8 +27,8 @@ public class EntradaServico {
 	public void deletar(int cod) throws RuntimeException {
 		try {
 			em.getTransaction().begin();
-			Entrada entrada = entradaDao.buscaPorCodigo(cod);
-			entradaDao.remover(entrada);
+			Entrada entr = entradaDao.buscaPorCodigo(cod);
+			entradaDao.remover(entr);
 			em.getTransaction().commit();
 		} catch (Throwable e) {
 			if (em.getTransaction().isActive())
@@ -37,10 +38,10 @@ public class EntradaServico {
 		}
 	}
 
-	public void inserir(Entrada entrada) throws RuntimeException {
+	public void inserir(Entrada entr) throws RuntimeException {
 		try {
 			em.getTransaction().begin();
-			entradaDao.inserir(entrada);
+			entradaDao.inserir(entr);
 			em.getTransaction().commit();
 		} catch (Throwable e) {
 			if (em.getTransaction().isActive())
@@ -50,10 +51,10 @@ public class EntradaServico {
 		}
 	}
 
-	public void atualizar(Entrada entrada) {
+	public void atualizar(Entrada entr) {
 		try {
 			em.getTransaction().begin();
-			entradaDao.atualizar(entrada);
+			entradaDao.atualizar(entr);
 			em.getTransaction().commit();
 		} catch (Throwable e) {
 			if (em.getTransaction().isActive())

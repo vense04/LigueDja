@@ -46,7 +46,12 @@
 						</a> <a href="#" class="list-group-item text-center">
 							<h4 class="glyphicon glyphicon-retweet"></h4> <br />Cadastro
 							Entrada
-						</a> <a href="#" class="list-group-item text-center">
+						</a> 
+						 <a href="#" class="list-group-item text-center">
+							<h4 class="glyphicon glyphicon-retweet"></h4> <br />Editar
+							Entrada
+						</a>
+						<a href="#" class="list-group-item text-center">
 							<h4 class="glyphicon glyphicon-phone"></h4> <br />Relatório de
 							Produto
 						</a> <a href="#" class="list-group-item text-center">
