@@ -70,9 +70,11 @@ public class EntradaCRUD extends HttpServlet {
 
 		try {
 			Entrada entrada = instanciar(request);
-			if (entrada == null) {
+			if (entrada.getCodEntrada() == null) {
+				System.out.println("entrada");
 				entradaServico.inserir(entrada);
 			} else {
+				System.out.println("atualizar");
 				entradaServico.atualizar(entrada);
 			}
 			RequestDispatcher rd = request.getRequestDispatcher(LISTAR);
@@ -93,14 +95,12 @@ public class EntradaCRUD extends HttpServlet {
 			if (aux!=null && !aux.isEmpty())
 				entrada.setCodEntrada(Integer.parseInt(aux));
 			
-			aux = req.getParameter("codProduto");
-			entrada.setProduto(produtoDao.getProduto(Integer.parseInt(aux)));
-
-			aux = req.getParameter("data");
-			entrada.setData(sdf.parse(aux));
-		
-			aux = req.getParameter("quantidade");
-			entrada.setQuantidade(Integer.parseInt(aux));
+			entrada.setProduto(produtoDao.getProduto(Integer.parseInt(req.getParameter("codProduto"))));
+			entrada.setData(sdf.parse(req.getParameter("data")));
+			entrada.setQuantidade(Integer.parseInt(req.getParameter("quantidade")));
+			
+			System.out.println(entrada.getProduto().getNomProduto() + "------------");
+			
 		} catch (Throwable e) {
 			e.printStackTrace();
 			throw new ParseException("Erro ao instanciar um entrada!", 0);
