@@ -45,7 +45,7 @@ public class Usuario implements Serializable {
 	/**
 	 * @uml.property  name="renda"
 	 */
-	private float renda;
+	private Float renda;
 
 	/**
 	 * @uml.property  name="senha"

@@ -16,11 +16,11 @@ import javax.servlet.http.HttpServletResponse;
 import servico.ClienteServico;
 import dominio.Usuario;
 
-@WebServlet("/AlterarCadastroClienteServlet")
+@WebServlet("/cliente/AlterarCadastroClienteServlet")
 public class AlterarCadastroClienteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static String ALTERAR_CLIENTE = "/listarCadastro.jsp";
+	private static String ALTERAR_CLIENTE = "/cliente/atualizarCadastro.jsp";
 
 	@Inject
 	private ClienteServico clienteservico;
@@ -36,8 +36,21 @@ public class AlterarCadastroClienteServlet extends HttpServlet {
 			Usuario usuar = clienteservico.carregar(cod);
 			System.out.println("usuario="+usuar.getNome());
 			request.setAttribute("us", usuar);
-			RequestDispatcher rd = request.getRequestDispatcher("/listarCadastro.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher(ALTERAR_CLIENTE);
 			rd.forward(request, response);
+			
+		}else if(cmd.equalsIgnoreCase("atualizar")){
+			try {
+				
+				Usuario usuar = instanciar(request);
+				clienteservico.editar(usuar);
+				
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
 		}
 	}
 
@@ -62,14 +75,11 @@ public class AlterarCadastroClienteServlet extends HttpServlet {
 	private Usuario instanciar(HttpServletRequest req) throws ParseException {
 		String auxiliar;
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Usuario usuar = new Usuario();
+		auxiliar = req.getParameter("codUsuario");
+		int cod = Integer.parseInt(auxiliar);
+		Usuario usuar = clienteservico.carregar(cod);
 		try {
 
-			auxiliar = req.getParameter("codUsuario");
-			usuar.setCodUsuario(Integer.parseInt(auxiliar));
-
-			
-			
 			auxiliar = req.getParameter("nome");
 			usuar.setNome(auxiliar);
 
@@ -85,12 +95,9 @@ public class AlterarCadastroClienteServlet extends HttpServlet {
 			auxiliar = req.getParameter("renda");
 			usuar.setRenda(Float.parseFloat(auxiliar));
 
-			auxiliar = req.getParameter("ativo");
-			usuar.setAtivo(Boolean.parseBoolean(auxiliar));
-
 		} catch (Throwable e) {
 			e.printStackTrace();
-			throw new ParseException("Erro ao cadastrar um Usuário!", 0);
+			throw new ParseException("Erro ao atualizar um Usuário!", 0);
 
 		}
 
