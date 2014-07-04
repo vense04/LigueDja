@@ -6,29 +6,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
 
 <title>Entrada</title>
 </head>
 <body>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("input.data").mask("99/99/9999");
-});
-</script>
+
 
 	<div id="geral">
 
 		<div id="conteudo">
-			<h2>Cadastro de Entrada</h2>
 
 			<form method="post" action="<%=request.getContextPath()%>/administrativo/entrada/EntradaCRUD" name="formEntr">
+			
 				Código : <input type="text" readonly="readonly" name="codEntrada"
 					value="<c:out value="${entr.codEntrada}" />" /> <br /> 
+		<c:choose>
+			<c:when test="${empty entr.codEntrada}">
 					Categoria
 					<select id="categorias" name="" class="form-control">
 					<c:forEach items="${sessionScope.categorias}" var="categoria">
@@ -37,6 +33,12 @@ $(document).ready(function(){
 				</select> 
 				Nome Produto: <select id="produtos" name="codProduto"
 					class="form-control" required>
+			</c:when>
+			<c:otherwise>
+				<input type="hidden" name="codProduto" value="${entr.produto.codProduto}" />
+				<input type="Text}" disabled value="${entr.produto.nomProduto}" />
+			</c:otherwise>
+		</c:choose>
 				</select> Quantidade : <input type="text" name="quantidade"
 					value="<c:out value="${entr.quantidade}" />" /> <br /> Data : <input
 					type="text" name="data"

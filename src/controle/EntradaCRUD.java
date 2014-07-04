@@ -73,11 +73,11 @@ public class EntradaCRUD extends HttpServlet {
 
 		try {
 			Entrada entr = instanciar(request);
-//			if (entr.getCodEntrada() == null) {
+			if (entr.getCodEntrada() == null) {
 				entradaServico.inserir(entr);
-//			} else {
-//				entradaServico.atualizar(entr);
-//			}
+			} else {
+				entradaServico.atualizar(entr);
+			}
 			RequestDispatcher rd = request.getRequestDispatcher(LISTAR);
 			request.setAttribute("lista", entradaServico.listarEntradas());
 			rd.forward(request, response);
@@ -93,20 +93,18 @@ public class EntradaCRUD extends HttpServlet {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Entrada entr = new Entrada();
 		try {
-//			aux = req.getParameter("codEntrada");
-//			if (aux != null && !aux.isEmpty())
-//				entr.setCodEntrada(Integer.parseInt(aux));
-			
+			aux = req.getParameter("codEntrada");
+			if (aux != null && !aux.isEmpty())
+				entr.setCodEntrada(Integer.parseInt(aux));
+
 			aux = req.getParameter("codProduto");
-			System.out.println(aux);
 			entr.setProduto(produtoServico.getProduto(Integer.parseInt(aux)));
-			
+
 			aux = req.getParameter("data");
 			entr.setData(sdf.parse(aux));
-			System.out.println(aux);
+			
 			aux = req.getParameter("quantidade");
 			entr.setQuantidade(Integer.parseInt(aux));
-			System.out.println(aux);
 		} catch (Throwable e) {
 			e.printStackTrace();
 			throw new ParseException("Erro ao instanciar a entrada!", 0);
