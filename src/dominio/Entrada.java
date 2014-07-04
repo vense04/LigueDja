@@ -31,7 +31,7 @@ public class Entrada implements Serializable {
 
 	private Integer quantidade;
 
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name="codProduto")
 	private Produto produto;
 

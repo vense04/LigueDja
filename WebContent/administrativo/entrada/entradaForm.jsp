@@ -12,18 +12,21 @@
 
 <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
 
-<title>teste</title>
+<title>Entrada</title>
 </head>
 <body>
-
+<script type="text/javascript">
+$(document).ready(function(){
+	$("input.data").mask("99/99/9999");
+});
+</script>
 
 	<div id="geral">
 
 		<div id="conteudo">
 			<h2>Cadastro de Entrada</h2>
 
-			<form method="post"
-				action="<%=request.getContextPath()%>/administrativo/entrada/EntradaCRUD" name="formEntr">
+			<form method="post" action="<%=request.getContextPath()%>/administrativo/entrada/EntradaCRUD" name="formEntr">
 				Código : <input type="text" readonly="readonly" name="codEntrada"
 					value="<c:out value="${entr.codEntrada}" />" /> <br /> 
 					Categoria
@@ -33,11 +36,11 @@
 					</c:forEach>
 				</select> 
 				Nome Produto: <select id="produtos" name="codProduto"
-					class="form-control">
+					class="form-control" required>
 				</select> Quantidade : <input type="text" name="quantidade"
 					value="<c:out value="${entr.quantidade}" />" /> <br /> Data : <input
 					type="text" name="data"
-					value="<fmt:formatDate pattern="dd/MM/yyyy" value="${entr.data}" />" />
+					value="<fmt:formatDate pattern="dd/MM/yyyy" value="${entr.data}" />"class="data" />
 				<br /> <input type="submit" value="Enviar" />
 			</form>
 

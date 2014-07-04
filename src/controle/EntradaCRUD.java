@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import servico.EntradaServico;
 import servico.ProdutoServico;
 import dominio.Entrada;
+import dominio.Produto;
 
 /**
  * Servlet implementation class EntradaCRUD
@@ -92,22 +93,23 @@ public class EntradaCRUD extends HttpServlet {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Entrada entr = new Entrada();
 		try {
-			aux = req.getParameter("codEntrada");
-			if (aux != null && !aux.isEmpty())
-				entr.setCodEntrada(Integer.parseInt(aux));
-
+//			aux = req.getParameter("codEntrada");
+//			if (aux != null && !aux.isEmpty())
+//				entr.setCodEntrada(Integer.parseInt(aux));
+			
 			aux = req.getParameter("codProduto");
+			System.out.println(aux);
 			entr.setProduto(produtoServico.getProduto(Integer.parseInt(aux)));
-
+			
 			aux = req.getParameter("data");
 			entr.setData(sdf.parse(aux));
-
+			System.out.println(aux);
 			aux = req.getParameter("quantidade");
 			entr.setQuantidade(Integer.parseInt(aux));
-
+			System.out.println(aux);
 		} catch (Throwable e) {
 			e.printStackTrace();
-			throw new ParseException("Erro ao instanciar uma entrada!", 0);
+			throw new ParseException("Erro ao instanciar a entrada!", 0);
 		}
 		return entr;
 	}

@@ -12,7 +12,7 @@
 <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
 
 
-<title>Teste</title>
+<title>Entrada</title>
 </head>
 <body>
  
@@ -21,6 +21,7 @@
 		<h2>Lista de Entrada</h2>
 		<br/>
 		    <p><a href="<%=request.getContextPath()%>/administrativo/entrada/EntradaCRUD?cmd=inserir">Adicionar nova entrada</a></p>
+		    <p><a href="<%=request.getContextPath()%>">Relátorio</a></p>
 		<table border=1>
 		        <thead>
 		            <tr>
