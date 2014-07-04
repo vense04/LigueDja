@@ -4,11 +4,11 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,14 +24,15 @@ public class Entrada implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Integer codEntrada;
+	@GeneratedValue
+	private int codEntrada;
 
 	@Temporal(TemporalType.DATE)
 	private Date data;
 
 	private Integer quantidade;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="codProduto")
 	private Produto produto;
 

@@ -73,11 +73,11 @@ public class EntradaCRUD extends HttpServlet {
 
 		try {
 			Entrada entr = instanciar(request);
-			if (entr.getCodEntrada() == null) {
+//			if (entr.getCodEntrada() == null) {
 				entradaServico.inserir(entr);
-			} else {
-				entradaServico.atualizar(entr);
-			}
+//			} else {
+//				entradaServico.atualizar(entr);
+//			}
 			RequestDispatcher rd = request.getRequestDispatcher(LISTAR);
 			request.setAttribute("lista", entradaServico.listarEntradas());
 			rd.forward(request, response);

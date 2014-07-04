@@ -33,14 +33,14 @@
 		            </tr>
 		        </thead>
 		        <tbody>
-		            <c:forEach items="${lista}" var="entr">
+		            <c:forEach items="${lista}" var="entrada">
 		                <tr>
-		                    <td><c:out value="${entr.codEntrada}" /></td>
-		                    <td><c:out value="" /></td>
-		                    <td><c:out value="${entr.quantidade}" /></td>
+		                    <td><c:out value="${entrada.codEntrada}" /></td>
+		                    <td><c:out value="${entrada.produto.nomProduto}" /></td>
+		                    <td><c:out value="${entrada.quantidade}" /></td>
 		                    <td><fmt:formatDate pattern="dd/MM/yyyy" value="${entr.data}" /></td>
-		                    <td><a href="<%=request.getContextPath()%>/administrativo/entrada/EntradaCRUD?cmd=editar&cod=<c:out value="${entr.codEntrada}"/>">Editar</a></td>
-		                    <td><a href="<%=request.getContextPath()%>/administrativo/entrada/EntradaCRUD?cmd=deletar&cod=<c:out value="${entr.codEntrada}"/>">Excluir</a></td>
+		                    <td><a href="<%=request.getContextPath()%>/administrativo/entrada/EntradaCRUD?cmd=editar&cod=<c:out value="${entrada.codEntrada}"/>">Editar</a></td>
+		                    <td><a href="<%=request.getContextPath()%>/administrativo/entrada/EntradaCRUD?cmd=deletar&cod=<c:out value="${entrada.codEntrada}"/>">Excluir</a></td>
 		                </tr>
 		            </c:forEach>
 		        </tbody>
