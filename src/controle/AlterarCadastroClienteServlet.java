@@ -99,7 +99,7 @@ public class AlterarCadastroClienteServlet extends HttpServlet {
 
 		} catch (Throwable e) {
 			e.printStackTrace();
-			throw new ParseException("Erro ao atualizar um Usu√°rio!", 0);
+			throw new ParseException("Erro ao atualizar um Usu·rio!", 0);
 
 		}
 

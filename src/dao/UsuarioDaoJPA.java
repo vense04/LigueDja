@@ -28,9 +28,8 @@ public class UsuarioDaoJPA implements UsuarioDao {
 	
 	@SuppressWarnings("unchecked")
 	public List<Usuario> buscaTodos() {
-		String s = "SELECT U.nome FROM TAB_USUARIO U "
-				+ "INNER JOIN TAB_USUARIO_PERMISSAO UP"
-				+  "ON U.codUsuario = UP.codUsuario WHERE UP.permissao = ROLE_CLIENTE AND U.ativo = 1";
+		String s = "SELECT u FROM Usuario u";
+				
 		Query query = em.createQuery(s);
 		return query.getResultList();
 	}

@@ -1,7 +1,6 @@
 package controle;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -18,7 +17,7 @@ import dominio.Usuario;
 public class ListarCadastroClienteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static String LISTAR_CLIENTE = "/cliente/alterarClientes.jsp";
+	private static String LISTAR_CLIENTE = "/cliente/ListarClientes.jsp";
 
 	@Inject
 	private ClienteServico clienteservico;
@@ -26,9 +25,17 @@ public class ListarCadastroClienteServlet extends HttpServlet {
 	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		List<Usuario> lista = clienteservico.listarClientes();
-		request.setAttribute("us", lista);
-		RequestDispatcher rd = request.getRequestDispatcher("/LISTAR_CLIENTE");
-		rd.forward(request, response);
+		
+	
+			
+			request.setAttribute("lista",clienteservico.listarClientes());
+			
+			for (Usuario usuario : clienteservico.listarClientes()) {
+				System.out.println(usuario.getNome());
+			}	
+			
+			RequestDispatcher rd =request.getRequestDispatcher(LISTAR_CLIENTE);
+			rd.forward(request, response);
+		
 	}
 }

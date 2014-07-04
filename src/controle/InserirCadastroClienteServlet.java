@@ -39,7 +39,7 @@ public class InserirCadastroClienteServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 		try {
-			Usuario usuar = instanciar(request);
+				Usuario usuar = instanciar(request);
 				clienteservico.inserir(usuar);
 		} catch (Throwable e) {
 			e.printStackTrace();
@@ -72,11 +72,7 @@ public class InserirCadastroClienteServlet extends HttpServlet {
 			auxiliar = req.getParameter("senha");
 			usuar.setSenha(auxiliar);
 			
-			/*
-			auxiliar = req.getParameter("cofsenha");
-			usuar.setConSenha(auxiliar); esse campo tem apenas no formulario mas nï¿½o tem no banco--verificar se tem a necessidade
-			talvez fazer uma javaScript para comparar se os dois campos sï¿½o iguais
-			*/
+			
 			
 			auxiliar = req.getParameter("dtnasc");
 			usuar.setDatNascimento(sdf.parse(auxiliar));
@@ -91,7 +87,7 @@ public class InserirCadastroClienteServlet extends HttpServlet {
 			
 		} catch (Throwable e) {
 			e.printStackTrace();
-			throw new ParseException("Erro ao cadastrar um Usuï¿½rio!", 0);
+			throw new ParseException("Erro ao cadastrar um Usuário!", 0);
 
 		}
 		

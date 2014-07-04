@@ -22,7 +22,7 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-	$("input.datanas").mask("99/99/9999");
+		
         $("input.cpf").mask("999.999.999-99");
         $("input.cep").mask("99.999-999");
         $("input.telefone").mask("(99) 9999-9999");
@@ -54,7 +54,7 @@ $(document).ready(function(){
 		
 		<p>
 			<label>Data de Nascimento:</label> 
-			<input id="datanas" name="dtnasc" <fmt:formatDate pattern="dd/MM/yyyy" value="${us.datNascimento }"/>" class="datanas" type="text" ><span class="alert">*</span>
+			<input id="datanas" name="dtnasc" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${us.datNascimento }"/>" class="datanas" type="text" ><span class="alert">*</span>
 		</p>
 		<p>
 			<label>Renda:</label> 

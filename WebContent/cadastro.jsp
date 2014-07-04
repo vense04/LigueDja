@@ -22,7 +22,7 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-	$("input.datanas").mask("99/99/9999");
+		$("input.datanas").mask("99/99/9999");
         $("input.cpf").mask("999.999.999-99");
         $("input.cep").mask("99.999-999");
         $("input.telefone").mask("(99) 9999-9999");
@@ -50,7 +50,7 @@ $(document).ready(function(){
 		
 		<p>
 			<label>Data de Nascimento:</label> 
-			<input id="datanas" name="dtnasc" value="<c:out value="${us.datNascimento}"/>" class="datanas" type="text" ><span class="alert">*</span>
+			<input id="datanas" name="dtnasc" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${us.datNascimento}"/>" class="datanas" type="text" ><span class="alert">*</span>
 		</p>
 		<p>
 			<label>Renda:</label> 
@@ -58,7 +58,7 @@ $(document).ready(function(){
 		</p>
 		<p>
 		<label>Ativo:</label>
-		<input id="" class="" name="ativo" value="<c:out value="${us.ativo}"/>" type="text"></input>
+		<input id="" class="" name="ativo" value="<c:out value="${us.ativo}"/>" type="hidden"></input>
 		</p>
 	</div>
 	<!--  
@@ -126,7 +126,7 @@ $(document).ready(function(){
 	-->
 		<p>
 			<label>&nbsp;</label>
-			<button type="submit" class="continue" onclick="location. href=' "<%=request.getContextPath()%>/WebContent/InserirCadastroClienteServlet?cmd=inserir">Enviar </button>
+			<input type="submit" value="Enviar" />
 		</p>
 	</form>
 	</article>
