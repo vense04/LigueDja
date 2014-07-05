@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import servico.EntradaServico;
 import servico.ProdutoServico;
 import dominio.Entrada;
-import dominio.Produto;
 
 /**
  * Servlet implementation class EntradaCRUD
@@ -111,4 +110,5 @@ public class EntradaCRUD extends HttpServlet {
 		}
 		return entr;
 	}
+	
 }

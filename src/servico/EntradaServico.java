@@ -20,6 +20,10 @@ public class EntradaServico {
 		return entradaDao.buscaTodos();
 	}
 
+//	public List<Entrada> entradasEntre(String dataInicial, String dataFinal) {
+//		return entradaDao.entradasEntre(dataInicial, dataFinal);
+//	}
+
 	public Entrada carregar(int cod) {
 		return entradaDao.buscaPorCodigo(cod);
 	}
@@ -63,4 +67,5 @@ public class EntradaServico {
 			throw new RuntimeException("Erro ao atualizar");
 		}
 	}
+
 }
