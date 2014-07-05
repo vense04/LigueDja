@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -36,7 +36,7 @@
 			</c:when>
 			<c:otherwise>
 				<input type="hidden" name="codProduto" value="${entr.produto.codProduto}" />
-				<input type="Text}" disabled value="${entr.produto.nomProduto}" />
+				Nome do Produto: <input type="Text}" disabled value="${entr.produto.nomProduto}" /><br />
 			</c:otherwise>
 		</c:choose>
 				</select> Quantidade : <input type="text" name="quantidade"
