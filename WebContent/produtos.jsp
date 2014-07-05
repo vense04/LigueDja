@@ -36,17 +36,17 @@
     <header>
         <div class="paging">
         <c:if test="${produtos.size()>10}">
-        	<c:if test="${param.inicio != null}">
+        	<c:if test="${!empty param.inicio}">
             	Página: <a href="Produtos?categoria=${param.categoria}&inicio=${(param.inicio-10)}">${(param.inicio\10)-1}</a>&nbsp; | &nbsp;${(param.inicio\10)}&nbsp; | &nbsp;<a href="Produtos?categoria=${param.categoria}&inicio=${(param.inicio+10)}">${(param.inicio\10)+1}</a>
             </c:if>
         </c:if>
         </div>
         <form action="#" >
-        <select name="sortBy" id="sortBy">
-            <option value="">Default</option>
-            <option value="PriceHiLo">Price (High to Low)</option>
-            <option value="PriceLoHi">Price (Low to High)</option>
-            <option value="pID">Most Recent</option>
+        <select name="ordem" id="ordem">
+            <option value="">Ordem</option>
+            <option value="maiorPreco<c:if test="${!empty param.categoria}">&categotia=${param.categoria}</c:if>" <c:if test="${param.ordem == 'maiorPreco'}"> selected </c:if>>Maior preço</option>
+            <option value="menorPreco<c:if test="${!empty param.categoria}">&categotia=${param.categoria}</c:if>" <c:if test="${param.ordem == 'menorPreco'}"> selected </c:if>>Menor preço</option>
+            <option value="popularidade<c:if test="${!empty param.categoria}">&categotia=${param.categoria}</c:if>" <c:if test="${param.ordem == 'popularidade'}"> selected </c:if>>Popularidade</option>
         </select> 
         &nbsp; Exibindo ${(param.inicio == null)? 1 : param.inicio} - ${(param.fim == null)? produtos.size() : param.fim} de ${produtos.size()} Celular(es)
         </form>
@@ -74,20 +74,13 @@
         </div>
     </footer>
 </article>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript">
-		$("#sortBy").on('change',
-						function() {
-							$.get("Teste?codCategoria=" + this.value).done(function(data) {
-								$('#produtos').empty();
-								for ( var produto in data["Produtos"]) {
-									$('#produtos').append('<option value=' + data["Produtos"][produto]["codProduto"] + '>'
-																			+ data["Produtos"][produto]["nomProduto"]
-																			+ '</option>');
-												}
-											});
-						});
-		$(document).ready(function() {
-			$('#categorias').change();
+		$("#ordem").on('change',
+			function() {
+				if (this.value != "") {
+					window.location.href = "Produtos?ordem=" + this.value;
+				}
 		});
 	</script>
 	<%@ include file="/Template/footer.jsp"%>

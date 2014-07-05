@@ -2,12 +2,16 @@ package controle;
 
 import java.io.IOException;
 
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dominio.Carrinho;
 
 /**
  * Servlet implementation class Pedido
@@ -15,6 +19,9 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/Pedido")
 public class Pedido extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	@Inject
+	Carrinho carrinho;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -28,7 +35,25 @@ public class Pedido extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/pagamento/pagamento.jsp");
+		
+		HttpSession sessao = request.getSession(false);
+		RequestDispatcher rd;
+		
+		carrinho = (Carrinho) sessao.getAttribute("carrinho");
+		
+		if (carrinho == null) {
+			rd = request.getRequestDispatcher("/pagamento/pagamento.jsp?pedido=vazio");
+		}
+		else {
+			if (carrinho.getItens().size() == 0) {
+				rd = request.getRequestDispatcher("/pagamento/pagamento.jsp?pedido=vazio");
+			} 
+			else {
+				rd = request.getRequestDispatcher("/pagamento/pagamento.jsp");
+			}
+			
+		}
+		
 		rd.forward(request, response);
 	}
 

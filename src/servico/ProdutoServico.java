@@ -17,12 +17,14 @@ public class ProdutoServico {
 	@Inject
 	private ProdutoDao produtoDao;
 	
-	
-	
-	
 	public List<Produto> listaProdutosPorCategoria(Categoria categoria) {
-		
+
 		return produtoDao.buscaTodosPorCategoria(categoria);
+	}
+
+	public List<Produto> listaProdutosPorCategoriaOrdenada(Categoria categoria, String ordem) {
+
+		return produtoDao.buscaTodosPorCategoriaOrdenada(categoria, ordem);
 	}
 	
 	public List<Produto> listaTodosProdutos() {

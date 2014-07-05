@@ -18,5 +18,8 @@ public interface ProdutoDao {
 	public List<Produto> buscaTodos();
 	
 	public List<Produto> buscaTodosPorCategoria(Categoria categoria);
+
+	public List<Produto> buscaTodosPorCategoriaOrdenada(Categoria categoria,
+			String ordem);
 	
 }
