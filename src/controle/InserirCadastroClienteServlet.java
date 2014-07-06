@@ -44,6 +44,7 @@ public class InserirCadastroClienteServlet extends HttpServlet {
 		try {
 			Usuario usuar = instanciar(request);
 			clienteservico.inserir(usuar);
+			
 
 		} catch (Throwable e) {
 			e.printStackTrace();
@@ -85,7 +86,7 @@ public class InserirCadastroClienteServlet extends HttpServlet {
 
 		} catch (Throwable e) {
 			e.printStackTrace();
-			throw new ParseException("Erro ao cadastrar um Usuário!", 0);
+			throw new ParseException("Erro ao cadastrar um Usuï¿½rio!", 0);
 
 		}
 

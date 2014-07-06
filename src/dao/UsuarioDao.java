@@ -16,5 +16,7 @@ public interface UsuarioDao {
 	public List<Usuario> buscaTodos();
 	
 	public List<Usuario> UsuariosEntre(String datInicial, String datFinal);
+	
+	public Integer getLastId();
 
 }
