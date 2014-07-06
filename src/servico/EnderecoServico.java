@@ -6,32 +6,31 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import dao.EnderecoDao;
-import dao.UsuarioDao;
-import dominio.Usuario;
+import dominio.Endereco;
 
-public class ClienteServico {
+public class EnderecoServico {
 	
 	@Inject
 	EntityManager em;
 	
 	@Inject
-	private UsuarioDao usuarioDao;
+	private EnderecoDao enderecoDao;
 	
 	
 	
-	public List<Usuario> listarClientes(){
-		return usuarioDao.buscaTodos();
+	public List<Endereco> listarClientes(){
+		return enderecoDao.buscaTodos();
 		
 	}
 	
-	public Usuario carregar(int cod) {
-		return usuarioDao.buscaPorCodigo(cod);
+	public Endereco carregar(int cod) {
+		return enderecoDao.buscaPorCodigo(cod);
 	}
 	
-	public void inserir( Usuario us) throws RuntimeException{
+	public void inserir( Endereco us) throws RuntimeException{
 		try{
 			em.getTransaction().begin();
-			usuarioDao.inserir(us);
+			enderecoDao.inserir(us);
 			em.getTransaction().commit();
 		} catch(Throwable e){
 			if (em.getTransaction().isActive())
@@ -40,10 +39,10 @@ public class ClienteServico {
 			throw new RuntimeException(" Erro ao Inserir Cadastro");
 		}
 	}
-	public void editar( Usuario us) throws RuntimeException{
+	public void editar( Endereco us) throws RuntimeException{
 		try{
 			em.getTransaction().begin();
-			usuarioDao.editar(us);
+			enderecoDao.editar(us);
 			em.getTransaction().commit();
 		} catch(Throwable e){
 			if (em.getTransaction().isActive())

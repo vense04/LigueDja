@@ -49,7 +49,7 @@ public class AlterarCadastroClienteServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			RequestDispatcher rd = request.getRequestDispatcher("/carrinho.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/ListarClientes.jsp");
 			rd.forward(request, response);	
 			
 		}

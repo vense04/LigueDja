@@ -33,13 +33,11 @@ $(document).ready(function(){
 	<%@ include file="/Template/header.jsp"%>
 	<article id="address">
 	<form method="post" action="<%= request.getContextPath() %>/InserirCadastroClienteServlet" name="inserecliente">
+	
 	<div id="form">
-		
-		
+		<!--  
 		<h1>Formulário de Cadastro</h1>
-		<p><a href='endereco.jsp'> Endereco</a> 
 		
-		</p>
 		<p>
 		<input type="hidden" name="codUsuario"  value="<c:out value="${us.nome}"/>"/>
 		</p>
@@ -69,7 +67,7 @@ $(document).ready(function(){
 		<input id="" class="" name="ativo" value="<c:out value="${us.ativo}"/>"" type="hidden"></input>
 		</p>
 	</div>
-	<!-- 
+	 -->
 	<div id="ship">
 		<h1>Endereço para entrega</h1>
 		<p>
@@ -126,7 +124,6 @@ $(document).ready(function(){
 			<label>CEP:</label> 
 			<input name="cep" value="<c:out value="${us.cep}"/>"type="text" id="" class="cep" required><span class="alert">*</span>
 		</p>
-		-->
 		<p>
 			<label>&nbsp;</label>
 			<button type="submit" class="continue" onclick="location. href=' "<%=request.getContextPath()%>/WebContent/InserirCadastroClienteServlet?cmd=inserir">Enviar </button>
