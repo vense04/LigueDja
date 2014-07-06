@@ -1,6 +1,6 @@
 <header>
 	<div class="wrapper">
-        <h1><a href="index.jsp" id="brand" title="LigueDjá">LigueDjá</a></h1>
+        <h1><a href="${pageContext.request.contextPath}/Home" id="brand" title="LigueDjá">LigueDjá</a></h1>
         <nav>
             <ul>
                 <li>
@@ -49,8 +49,8 @@
         	<input type="text" placeholder="Search LigueDjá..." /><button type="submit">Search</button>
         </form>
         <div id="action-bar">
-        	<a href="login.jsp"> Login/Registre-se</a> // 
-        	<a href="Carrinho">Meu Carrinho <span id="itensCarrinho">${sessionScope.carrinho.quantidadeProdutos()}</span></a> // 
+        	<a href="${pageContext.request.contextPath}/login.jsp"> Login/Registre-se</a> // 
+        	<a href="${pageContext.request.contextPath}/Carrinho">Meu Carrinho <span id="itensCarrinho">${sessionScope.carrinho.quantidadeProdutos()}</span></a> // 
         	<a href="<c:url value="/j_spring_security_logout" />" title="Fazer logout">Logout</a> // 
 			<a href="administrativo/admin.jsp">Administrativo</a> 
 		</div>
