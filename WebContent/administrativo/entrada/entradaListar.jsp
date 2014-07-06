@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="UTF-8">
 
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/style.css" />
@@ -27,49 +27,63 @@
 </head>
 <body>
 	<div class="container">
-		<div class="row col-md-10 col-md-offset-1 custyle">
-			<table class="table table-striped custab">
-				<thead>
-					<a href="<%=request.getContextPath()%>/administrativo/entrada/EntradaCRUD?cmd=inserir" class="btn btn-primary btn-xs pull-right"><b>+</b>
-						Adicionar Entrada</a>
-						
-					<a href="<%=request.getContextPath()%>/administrativo/admin.jsp" class="btn btn-warning  btn-xs pull-left"><b><<< </b>Voltar Painel</a>	
-					<tr>
-						<th>Código</th>
-						<th>Nome</th>
-						<th>Quantidade</th>
-						<th>Data</th>
-						<th class="text-center">Ação</th>
-					</tr>
-				</thead>
-				<c:forEach items="${lista}" var="entrada">
-					<tr>
-						<td><c:out value="${entrada.codEntrada}" /></td>
-						<td><c:out value="${entrada.produto.nomProduto}" /></td>
-						<td><c:out value="${entrada.quantidade}" /></td>
-						<td><fmt:formatDate pattern="dd/MM/yyyy"
-								value="${entrada.data}" /></td>
-						<td class="text-center"><a class='btn btn-info btn-xs'
-							href="<%=request.getContextPath()%>/administrativo/entrada/EntradaCRUD?cmd=editar&cod=<c:out value="${entrada.codEntrada}"/>">
-								<span class="glyphicon glyphicon-edit"></span> Editar
-						</a> <a
-							href="<%=request.getContextPath()%>/administrativo/entrada/EntradaCRUD?cmd=deletar&cod=<c:out value="${entrada.codEntrada}"/>"
-							class="btn btn-danger btn-xs"> <span
-								class="glyphicon glyphicon-remove"> </span>Excluir
-						</a></td>
+		<div class="row">
+			<div class="col-md-12" style="">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							<span class="glyphicon glyphicon-bookmark"></span> Painel
+							Administrativo
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<%@ include file="/administrativo/menuAdmin.jsp"%>
+					</div>
+				</div>
+			</div>
 
 
-					</tr>
-				</c:forEach>
-				
-			</table>
+			<div class="col-md-12 custyle " style="margin-left:5px;padding:20px 10px 30px;">
+				<table class="table table-striped custab col-xs-12 " >
+					<thead>
+						<a
+							href="<%=request.getContextPath()%>/administrativo/entrada/EntradaCRUD?cmd=inserir"
+							class="btn btn-primary btn-xs pull-right"><b>+</b> Adicionar
+							Entrada</a>
+
+						<tr>
+							<th>Código</th>
+							<th>Nome</th>
+							<th>Quantidade</th>
+							<th>Data</th>
+							<th class="text-center">Ação</th>
+						</tr>
+					</thead>
+					<c:forEach items="${lista}" var="entrada">
+						<tr>
+							<td><c:out value="${entrada.codEntrada}" /></td>
+							<td><c:out value="${entrada.produto.nomProduto}" /></td>
+							<td><c:out value="${entrada.quantidade}" /></td>
+							<td><fmt:formatDate pattern="dd/MM/yyyy"
+									value="${entrada.data}" /></td>
+							<td class="text-center"><a class='btn btn-info btn-xs'
+								href="<%=request.getContextPath()%>/administrativo/entrada/EntradaCRUD?cmd=editar&cod=<c:out value="${entrada.codEntrada}"/>">
+									<span class="glyphicon glyphicon-edit"></span> Editar
+							</a> <a
+								href="<%=request.getContextPath()%>/administrativo/entrada/EntradaCRUD?cmd=deletar&cod=<c:out value="${entrada.codEntrada}"/>"
+								class="btn btn-danger btn-xs"> <span
+									class="glyphicon glyphicon-remove"> </span>Excluir
+							</a></td>
+
+
+						</tr>
+					</c:forEach>
+
+				</table>
+			</div>
 		</div>
 	</div>
-
-</body>
-</html>
-
-
 </body>
 </html>
 

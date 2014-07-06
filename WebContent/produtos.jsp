@@ -42,6 +42,7 @@
         </c:if>
         </div>
         <form action="#" >
+         Filtrar por: 
         <select name="ordem" id="ordem">
             <option value="">Ordem</option>
             <option value="maiorPreco<c:if test="${!empty param.categoria}">&categotia=${param.categoria}</c:if>" <c:if test="${param.ordem == 'maiorPreco'}"> selected </c:if>>Maior preço</option>
