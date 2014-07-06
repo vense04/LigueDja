@@ -1,5 +1,6 @@
 package dao;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -54,7 +55,8 @@ public class UsuarioDaoJPA implements UsuarioDao {
 	@Override
 	public Integer getLastId() {
 		
-		return (Integer) em.createQuery("SELECT last_insert_id from Usuario").getSingleResult();
+		return (Integer) em.createQuery("select MAX(codUsuario) from Usuario u").getSingleResult();
+//		return ((BigInteger) em.createNativeQuery("select MAX(codUsuario) from TAB_USUARIO").getSingleResult()).longValue();
 	}
 	
 	
