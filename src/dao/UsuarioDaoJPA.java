@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 
+
+
 import dominio.Usuario;
 
 public class UsuarioDaoJPA implements UsuarioDao {
@@ -46,6 +48,13 @@ public class UsuarioDaoJPA implements UsuarioDao {
 		List<Usuario> lista = query.getResultList();
 		return lista;
 		
+	}
+
+
+	@Override
+	public Integer getLastId() {
+		
+		return (Integer) em.createQuery("SELECT last_insert_id from Usuario").getSingleResult();
 	}
 	
 	

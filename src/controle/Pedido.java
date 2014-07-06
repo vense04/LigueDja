@@ -16,7 +16,7 @@ import dominio.Carrinho;
 /**
  * Servlet implementation class Pedido
  */
-@WebServlet("/Pedido")
+@WebServlet("/pagamento/Pedido")
 public class Pedido extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -41,18 +41,14 @@ public class Pedido extends HttpServlet {
 		
 		carrinho = (Carrinho) sessao.getAttribute("carrinho");
 		
-		if (carrinho == null) {
-			rd = request.getRequestDispatcher("/pagamento/pagamento.jsp?pedido=vazio");
+		if (carrinho == null || 
+			carrinho.getItens().size() == 0) {
+			rd = request.getRequestDispatcher("/pagamento/pagamento.jsp?carrinho=vazio");
 		}
 		else {
-			if (carrinho.getItens().size() == 0) {
-				rd = request.getRequestDispatcher("/pagamento/pagamento.jsp?pedido=vazio");
-			} 
-			else {
-				rd = request.getRequestDispatcher("/pagamento/pagamento.jsp");
-			}
-			
+			rd = request.getRequestDispatcher("/pagamento/pagamento.jsp");
 		}
+			
 		
 		rd.forward(request, response);
 	}
