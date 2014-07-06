@@ -38,7 +38,7 @@ public class InserirEnderecoClienteServlet extends HttpServlet {
 			forward = INSERIR_ENDERECO;
 		}
 		int cod = Integer.parseInt(request.getParameter("codUsuario"));
-		Usuario usuario = ClienteServico.bus(cod); 
+		Usuario usuario = clienteservico.carregar(cod); 
 		
 		
 		RequestDispatcher rd = request.getRequestDispatcher(forward);
