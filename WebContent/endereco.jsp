@@ -126,7 +126,7 @@ $(document).ready(function(){
 		</p>
 		<p>
 			<label>&nbsp;</label>
-			<button type="submit" class="continue" onclick="location. href=' "<%=request.getContextPath()%>/WebContent/InserirCadastroClienteServlet?cmd=inserir">Enviar </button>
+			<button type="submit" class="continue" onclick="location. href=' "<%=request.getContextPath()%>/WebContent/InserirEnderecoClienteServlet?cmd=inserir">Enviar </button>
 		</p>
 	</div>
 	

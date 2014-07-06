@@ -40,20 +40,18 @@ $(document).ready(function(){
 		<p><a href='endereco.jsp'> Endereco</a> 
 		
 		</p>
-		<p>
-		<input type="hidden" name="codUsuario"  value="<c:out value="${us.nome}"/>"/>
-		</p>
+		
 		<p>
 			<label>Nome:</label> 
-			<input id="" name="nome" value="<c:out value="${us.nome}"/>"" type="text" required><span class="alert">*</span>
+			<input id="" name="nome" value="<c:out value="${us.nome}"/>" type="text" ><span class="alert">*</span>
 		</p>
 		<p>
 			<label>Email:</label> 
-			<input id="" name="email" value="<c:out value="${us.email}"/>"" type="email" required><span class="alert">*</span>
+			<input id="" name="email" value="<c:out value="${us.email}"/>" type="email" required><span class="alert">*</span>
 		</p>
 		<p>
 			<label>Senha:</label> 
-			<input id="" name="senha" value="<c:out value="${us.senha}"/>"" type="password" required><span class="alert">*</span>
+			<input id="" name="senha" value="<c:out value="${us.senha}"/>" type="password" required><span class="alert">*</span>
 		</p>
 		
 		<p>
@@ -62,12 +60,14 @@ $(document).ready(function(){
 		</p>
 		<p>
 			<label>Renda:</label> 
-			<input id="" class="" name="renda" value="<c:out value="${us.renda}"/>"" type="text"><span class="alert">*</span>
+			<input id="" class="" name="renda" value="<c:out value="${us.renda}"/>" type="text"><span class="alert">*</span>
 		</p>
+		<!--  
 		<p>
 		<label>Ativo:</label>
-		<input id="" class="" name="ativo" value="<c:out value="${us.ativo}"/>"" type="hidden"></input>
+		<input id="" class="" name="ativo" value="<c:out value="${us.ativo}"/>"  type="hidden"></input>
 		</p>
+		-->
 	</div>
 	<!-- 
 	<div id="ship">
@@ -129,14 +129,10 @@ $(document).ready(function(){
 		-->
 		<p>
 			<label>&nbsp;</label>
-			<button type="submit" class="continue" onclick="location. href=' "<%=request.getContextPath()%>/WebContent/InserirCadastroClienteServlet?cmd=inserir">Enviar </button>
-		</p>
+			<button type="submit" class="continue" > Enviar</button>
 	</div>
 	
-		<p>
-			<label>&nbsp;</label>
-			<input type="submit" value="Enviar" />
-		</p>
+		
 	</form>
 	</article>
 

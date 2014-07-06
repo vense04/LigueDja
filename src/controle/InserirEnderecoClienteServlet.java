@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import servico.ClienteServico;
 import servico.EnderecoServico;
 import dominio.Endereco;
+import dominio.Usuario;
 
 @WebServlet("/InserirEnderecoClienteServlet")
 public class InserirEnderecoClienteServlet extends HttpServlet {
@@ -20,6 +22,8 @@ public class InserirEnderecoClienteServlet extends HttpServlet {
 
 	private static String INSERIR_ENDERECO = "/endereco.jsp";
 
+	@Inject
+	private ClienteServico clienteservico;
 		
 	@ Inject
 	private EnderecoServico enderecoServico;
@@ -33,12 +37,20 @@ public class InserirEnderecoClienteServlet extends HttpServlet {
 		if (cmd.equalsIgnoreCase("inserir")) {
 			forward = INSERIR_ENDERECO;
 		}
+		int cod = Integer.parseInt(request.getParameter("codUsuario"));
+		Usuario usuario = clienteservico.carregar(cod); 
+		
+		
 		RequestDispatcher rd = request.getRequestDispatcher(forward);
 		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		
+		
 		try {
 			Endereco end = instanciar2(request);
 			enderecoServico.inserir(end);
@@ -89,7 +101,7 @@ public class InserirEnderecoClienteServlet extends HttpServlet {
 			
 		} catch (Throwable e) {
 			e.printStackTrace();
-			throw new ParseException("Erro ao cadastrar um Usuário!", 0);
+			throw new ParseException("Erro ao cadastrar um Usuï¿½rio!", 0);
 
 		}
 		return end;
