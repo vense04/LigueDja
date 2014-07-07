@@ -1,3 +1,4 @@
+
 package controle;
 
 import java.io.IOException;
@@ -15,11 +16,11 @@ import javax.servlet.http.HttpServletResponse;
 import servico.ClienteServico;
 import dominio.Usuario;
 
-@WebServlet("/InserirCadastroClienteServlet")
-public class InserirCadastroClienteServlet extends HttpServlet {
+@WebServlet("/AlterarCadastroClienteServlet")
+public class AlterarCadastroEnderecoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static String INSERIR_CLIENTE = "/cadastro.jsp";
+	private static String ALTERAR_CLIENTE = "/cliente/atualizarCadastro.jsp";
 
 	@Inject
 	private ClienteServico clienteservico;
@@ -30,38 +31,56 @@ public class InserirCadastroClienteServlet extends HttpServlet {
 		String forward = "";
 		String cmd = request.getParameter("cmd");
 
-		if (cmd.equalsIgnoreCase("inserir")) {
-			forward = INSERIR_CLIENTE;
+		if (cmd.equalsIgnoreCase("editar")) {
+			int cod = Integer.parseInt(request.getParameter("cod"));
+			Usuario usuar = clienteservico.carregar(cod);
+			
+			request.setAttribute("us", usuar);
+			RequestDispatcher rd = request.getRequestDispatcher(ALTERAR_CLIENTE);
+			rd.forward(request, response);
+			
+		}else if(cmd.equalsIgnoreCase("atualizar")){
+			try {
+				
+				Usuario usuar = instanciar(request);
+				clienteservico.editar(usuar);
+				
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			RequestDispatcher rd = request.getRequestDispatcher("/ListarClientes.jsp");
+			rd.forward(request, response);	
+			
 		}
-		RequestDispatcher rd = request.getRequestDispatcher(forward);
-		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
 			Usuario usuar = instanciar(request);
-			clienteservico.inserir(usuar);
+			if(usuar.getCodUsuario()!=null)
+			clienteservico.editar(usuar);
+			System.out.println(usuar);
 
 		} catch (Throwable e) {
 			e.printStackTrace();
-			throw new ServletException("Erro no post" + e.getMessage());
+			throw new ServletException("Erro no post " + e.getMessage());
 
 		}
 
-		RequestDispatcher rd = request.getRequestDispatcher("/endereco.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/carrinho.jsp");
 		rd.forward(request, response);
+
 	}
 
 	private Usuario instanciar(HttpServletRequest req) throws ParseException {
 		String auxiliar;
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Usuario usuar = new Usuario();
+		auxiliar = req.getParameter("codUsuario");
+		int cod = Integer.parseInt(auxiliar);
+		Usuario usuar = clienteservico.carregar(cod);
 		try {
-
-			auxiliar = req.getParameter("codUsuario");
-			if (auxiliar != null && auxiliar.isEmpty())
-				usuar.setCodUsuario(Integer.parseInt(auxiliar));
 
 			auxiliar = req.getParameter("nome");
 			usuar.setNome(auxiliar);
@@ -78,16 +97,12 @@ public class InserirCadastroClienteServlet extends HttpServlet {
 			auxiliar = req.getParameter("renda");
 			usuar.setRenda(Float.parseFloat(auxiliar));
 
-			auxiliar = req.getParameter("ativo");
-			usuar.setAtivo(Boolean.parseBoolean(auxiliar));
-
 		} catch (Throwable e) {
 			e.printStackTrace();
-			throw new ParseException("Erro ao cadastrar um Usu�rio!", 0);
+			throw new ParseException("Erro ao atualizar um Usu�rio!", 0);
 
 		}
 
 		return usuar;
 	}
-
 }
