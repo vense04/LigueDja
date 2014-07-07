@@ -15,6 +15,5 @@ public interface EnderecoDao {
 	
 	public List<Endereco> buscaTodos();
 	
-	public List<Endereco> EnderecosEntre(String datInicial, String datFinal);
 
 }

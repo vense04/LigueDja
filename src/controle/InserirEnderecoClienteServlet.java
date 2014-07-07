@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import servico.ClienteServico;
 import servico.EnderecoServico;
 import dominio.Endereco;
-import dominio.Usuario;
 
 @WebServlet("/InserirEnderecoClienteServlet")
 public class InserirEnderecoClienteServlet extends HttpServlet {
@@ -24,10 +23,10 @@ public class InserirEnderecoClienteServlet extends HttpServlet {
 
 	@Inject
 	private ClienteServico clienteservico;
-		
-	@ Inject
+
+	@Inject
 	private EnderecoServico enderecoServico;
-	
+
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
@@ -37,21 +36,16 @@ public class InserirEnderecoClienteServlet extends HttpServlet {
 		if (cmd.equalsIgnoreCase("inserir")) {
 			forward = INSERIR_ENDERECO;
 		}
-		int cod = Integer.parseInt(request.getParameter("codUsuario"));
-		Usuario usuario = clienteservico.carregar(cod); 
-		
-		
+
 		RequestDispatcher rd = request.getRequestDispatcher(forward);
 		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		
-		
+
 		try {
+
 			Endereco end = instanciar2(request);
 			enderecoServico.inserir(end);
 
@@ -65,46 +59,44 @@ public class InserirEnderecoClienteServlet extends HttpServlet {
 		rd.forward(request, response);
 	}
 
-	
-	
-	
 	private Endereco instanciar2(HttpServletRequest req) throws ParseException {
-		
+
 		String auxiliar2;
-		
+		Integer auxiliar3;
+
 		Endereco end = new Endereco();
 		try {
-
 			auxiliar2 = req.getParameter("codEndereco");
-			System.out.println(auxiliar2);
+
 			if (auxiliar2 != null && auxiliar2.isEmpty())
 				end.setCodEndereco(Integer.parseInt(auxiliar2));
+			auxiliar3 = clienteservico.getLastId();
 
+			end.setUsuario(clienteservico.carregar(auxiliar3));
 			auxiliar2 = req.getParameter("logradouro");
 			end.setLogradouro(auxiliar2);
-			System.out.println(auxiliar2);
+
 			auxiliar2 = req.getParameter("numero");
 			end.setNumero(auxiliar2);
-			System.out.println(auxiliar2);
+
 			auxiliar2 = req.getParameter("complemento");
 			end.setComplemento(auxiliar2);
-			System.out.println(auxiliar2);
+
 			auxiliar2 = req.getParameter("cidade");
 			end.setCidade(auxiliar2);
-			System.out.println(auxiliar2);
+
 			auxiliar2 = req.getParameter("uf");
 			end.setUf(auxiliar2);
-			System.out.println(auxiliar2);
+
 			auxiliar2 = req.getParameter("cep");
 			end.setCep(auxiliar2);
-			System.out.println(auxiliar2);
-			
+
 		} catch (Throwable e) {
 			e.printStackTrace();
-			throw new ParseException("Erro ao cadastrar um Usu�rio!", 0);
+			throw new ParseException("Erro ao cadastrar um Usuário!", 0);
 
 		}
 		return end;
 	}
-	
+
 }
