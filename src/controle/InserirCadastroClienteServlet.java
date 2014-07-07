@@ -52,7 +52,7 @@ public class InserirCadastroClienteServlet extends HttpServlet {
 
 		}
 
-		RequestDispatcher rd = request.getRequestDispatcher("/endereco.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/carrinho.jsp");
 		rd.forward(request, response);
 	}
 

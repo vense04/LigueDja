@@ -27,32 +27,14 @@ public class RelatServlet extends HttpServlet {
 		String nomeRelat = request.getParameter("nomeRelat");
 
 		if (nomeRelat.equalsIgnoreCase("relatorioEntrada")) {
-
+			
 			String aux = request.getParameter("dataInicial");
 			String aux1 = request.getParameter("dataFinal");
-
-			parametros.put("2010-12-21", aux);
+			
+			
+			parametros.put("2010-12-21",aux);
 			parametros.put("2014-12-21", aux1);
-
-		}
-
-		if (nomeRelat.equalsIgnoreCase("relatorioCliente")) {
-
-			String aux = request.getParameter("dataInicial");
-			String aux1 = request.getParameter("dataFinal");
-
-			parametros.put("2010-12-21", aux);
-			parametros.put("2014-12-21", aux1);
-
-		}
-		if (nomeRelat.equalsIgnoreCase("relatorioDeVendas")) {
-
-			String aux = request.getParameter("dataInicial");
-			String aux1 = request.getParameter("dataFinal");
-
-			parametros.put("2010-12-21", aux);
-			parametros.put("2014-12-21", aux1);
-
+	
 		}
 
 		String arquivoJasper = getServletContext().getRealPath(
