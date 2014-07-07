@@ -15,5 +15,5 @@ public interface EntradaDao {
 
 	public List<Entrada> buscaTodos();
 	
-//	public List<Entrada> entradasEntre(String dataInicial, String dataFinal);
+	public List<Entrada> entradasEntre(String dataInicial, String dataFinal);
 }
