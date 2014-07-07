@@ -33,11 +33,11 @@ $(document).ready(function(){
 	<%@ include file="/Template/header.jsp"%>
 	<article id="address">
 	<form method="post" action="<%= request.getContextPath() %>/InserirCadastroClienteServlet" name="inserecliente">
-	<div id="ship">
+	<div id="form">
 		
 		
 		<h1>Formulário de Cadastro</h1>
-		<span class="alert">* obrigatório</span> 
+		<p><a href='endereco.jsp'> Endereco</a> 
 		
 		</p>
 		
@@ -129,7 +129,7 @@ $(document).ready(function(){
 		-->
 		<p>
 			<label>&nbsp;</label>
-			<button type="submit" class="continue" > PRÓXIMO</button>
+			<button type="submit" class="continue" > Enviar</button>
 	</div>
 	
 		

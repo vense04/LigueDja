@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import servico.ClienteServico;
+import servico.EnderecoServico;
+import dominio.Endereco;
 import dominio.Usuario;
 
 @WebServlet("/InserirCadastroClienteServlet")
@@ -42,6 +44,7 @@ public class InserirCadastroClienteServlet extends HttpServlet {
 		try {
 			Usuario usuar = instanciar(request);
 			clienteservico.inserir(usuar);
+			
 
 		} catch (Throwable e) {
 			e.printStackTrace();
@@ -49,7 +52,7 @@ public class InserirCadastroClienteServlet extends HttpServlet {
 
 		}
 
-		RequestDispatcher rd = request.getRequestDispatcher("/endereco.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/carrinho.jsp");
 		rd.forward(request, response);
 	}
 
