@@ -16,11 +16,8 @@ public class ClienteServico {
 	@Inject
 	private UsuarioDao usuarioDao;
 	
-	
-	
 	public List<Usuario> listarClientes(){
 		return usuarioDao.buscaTodos();
-		
 	}
 	
 	public Usuario carregar(int cod) {
@@ -39,12 +36,6 @@ public class ClienteServico {
 			throw new RuntimeException(" Erro ao Inserir Cadastro");
 		}
 	}
-	
-	public Integer getLastId() {
-		
-		return usuarioDao.getLastId();
-	}
-	
 	public void editar( Usuario us) throws RuntimeException{
 		try{
 			em.getTransaction().begin();

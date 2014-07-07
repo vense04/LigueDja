@@ -34,7 +34,7 @@ $(document).ready(function(){
 	<article id="address">
 	<form method="post" action="<%= request.getContextPath() %>/AlterarCadastroClienteServlet" name="alteracliente">
 	<div id="form">
-		<h1>Atualizar Cadastro</h1>
+		<h1>Formulário de Cadastro</h1>
 	
 			<input type="hidden"  name="codUsuario" value="<c:out value="${us.codUsuario }"/>" />
 		

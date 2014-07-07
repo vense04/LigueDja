@@ -34,7 +34,7 @@ public class AlterarCadastroClienteServlet extends HttpServlet {
 		if (cmd.equalsIgnoreCase("editar")) {
 			int cod = Integer.parseInt(request.getParameter("cod"));
 			Usuario usuar = clienteservico.carregar(cod);
-			
+			System.out.println("usuario="+usuar.getNome());
 			request.setAttribute("us", usuar);
 			RequestDispatcher rd = request.getRequestDispatcher(ALTERAR_CLIENTE);
 			rd.forward(request, response);
@@ -49,7 +49,7 @@ public class AlterarCadastroClienteServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			RequestDispatcher rd = request.getRequestDispatcher("/ListarClientes.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/carrinho.jsp");
 			rd.forward(request, response);	
 			
 		}
@@ -99,7 +99,7 @@ public class AlterarCadastroClienteServlet extends HttpServlet {
 
 		} catch (Throwable e) {
 			e.printStackTrace();
-			throw new ParseException("Erro ao atualizar um Usuï¿½rio!", 0);
+			throw new ParseException("Erro ao atualizar um Usuário!", 0);
 
 		}
 

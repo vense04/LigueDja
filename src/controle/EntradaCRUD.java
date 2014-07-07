@@ -3,7 +3,6 @@ package controle;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -111,5 +110,5 @@ public class EntradaCRUD extends HttpServlet {
 		}
 		return entr;
 	}
-		
+	
 }

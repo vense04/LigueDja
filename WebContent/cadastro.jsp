@@ -33,17 +33,11 @@ $(document).ready(function(){
 	<%@ include file="/Template/header.jsp"%>
 	<article id="address">
 	<form method="post" action="<%= request.getContextPath() %>/InserirCadastroClienteServlet" name="inserecliente">
-	<div id="ship">
-		
-		
+	<div id="form">
 		<h1>Formulário de Cadastro</h1>
-		<span class="alert">* obrigatório</span> 
-		
-		</p>
-		
 		<p>
 			<label>Nome:</label> 
-			<input id="" name="nome" value="<c:out value="${us.nome}"/>" type="text" ><span class="alert">*</span>
+			<input id="" name="nome" value="<c:out value="${us.nome}"/>" type="text" required><span class="alert">*</span>
 		</p>
 		<p>
 			<label>Email:</label> 
@@ -56,42 +50,40 @@ $(document).ready(function(){
 		
 		<p>
 			<label>Data de Nascimento:</label> 
-			<input id="datanas" name="dtnasc" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${us.datNascimento}"/>"" class="datanas" type="text" ><span class="alert">*</span>
+			<input id="datanas" name="dtnasc" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${us.datNascimento}"/>" class="datanas" type="text" ><span class="alert">*</span>
 		</p>
 		<p>
 			<label>Renda:</label> 
 			<input id="" class="" name="renda" value="<c:out value="${us.renda}"/>" type="text"><span class="alert">*</span>
 		</p>
-		<!--  
 		<p>
 		<label>Ativo:</label>
-		<input id="" class="" name="ativo" value="<c:out value="${us.ativo}"/>"  type="hidden"></input>
+		<input id="" class="" name="ativo" value="<c:out value="${us.ativo}"/>" type="hidden"></input>
 		</p>
-		-->
 	</div>
-	<!-- 
+	<!--  
 	<div id="ship">
 		<h1>Endereço para entrega</h1>
 		<p>
-			<label>Logradouro:</label> 
-			<input name="logradouro" value="<c:out value="${us.logradouro}"/>" type="text" id="" required><span class="alert">*</span>
+			<label for="">Logradouro:</label> 
+			<input name="log" type="text" id="" required><span class="alert">*</span>
 		</p>
 		<p>
-			<label>Número:</label> 
-			<input name="numero" value="<c:out value="${us.numero}"/>"type="text" id="" required><span class="alert">*</span>
+			<label for="">Número:</label> 
+			<input name="num" type="text" id="" required><span class="alert">*</span>
 		</p>
 		<p>
-			<label>Complemento:</label> 
-			<input name="complemento" value="<c:out value="${us.complemento}"/>"type="text" id="" required><span class="alert">*</span>
+			<label for="">Complemento:</label> 
+			<input name="compl" type="text" id="" required><span class="alert">*</span>
 		</p>
 		<p>
-			<label>Cidade:</label> 
-			<input name="cidade" value="<c:out value="${us.cidade}"/>" type="text" id="" required><span class="alert">*</span>
+			<label for="">Cidade:</label> 
+			<input name="cidade" type="text" id="" required><span class="alert">*</span>
 		</p>
 		<p>
-			<label>Estado:</label>
+			<label for="">Estado:</label>
 				
-			<select name="uf" value="<c:out value="${us.uf}"/>" id="" onchange="javascript:startDisplay();">
+			<select name="estado" id=""name="" onchange="javascript:startDisplay();">
 				<option value="0">Selecione seu Estado</option>
 				<option value="ac">Acre</option>
 				<option value="al">Alagoas</option>
@@ -123,16 +115,19 @@ $(document).ready(function(){
 			</select>
 		</p>
 		<p>
-			<label>CEP:</label> 
-			<input name="cep" value="<c:out value="${us.cep}"/>"type="text" id="" class="cep" required><span class="alert">*</span>
+			<label for="">CEP:</label> 
+			<input name="cep" type="text" id="" class="cep" required><span class="alert">*</span>
 		</p>
-		-->
 		<p>
 			<label>&nbsp;</label>
-			<button type="submit" class="continue" > PRÓXIMO</button>
+			<button type="submit" class="continue" onclick="location. href=' "<%=request.getContextPath()%>/WebContent/InserirCadastroClienteServlet?cmd=inserir">Enviar </button>
+		</p>
 	</div>
-	
-		
+	-->
+		<p>
+			<label>&nbsp;</label>
+			<input type="submit" value="Enviar" />
+		</p>
 	</form>
 	</article>
 

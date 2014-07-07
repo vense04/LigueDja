@@ -1,6 +1,6 @@
 <header>
 	<div class="wrapper">
-        <h1><a href="${pageContext.request.contextPath}/Home" id="brand" title="LigueDjá">LigueDjá</a></h1>
+        <h1><a href="index.jsp" id="brand" title="LigueDjá">LigueDjá</a></h1>
         <nav>
             <ul>
                 <li>
@@ -51,14 +51,7 @@
         <div id="action-bar">
         	<a href="login.jsp"> Login/Registre-se</a> // 
         	<a href="Carrinho">Meu Carrinho <span id="itensCarrinho">${sessionScope.carrinho.quantidadeProdutos()}</span></a> // 
-        	<% 
-			 	String login = org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication().getName(); 
-			 	if (!login.equals("anonymousUser")) { 
-			 %> 
-        	
-        	<a href="<c:url value="/j_spring_security_logout" />" title="Fazer logout"><%=login %> : Sair</a> // 
-        	
-        	<%} %>
+        	<a href="<c:url value="/j_spring_security_logout" />" title="Fazer logout">Logout</a> // 
 			<a href="administrativo/admin.jsp">Administrativo</a> 
 		</div>
     </div>

@@ -1,14 +1,7 @@
 package dominio;
 
 import java.io.Serializable;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 /**
@@ -25,8 +18,7 @@ public class Endereco implements Serializable {
 	 * @uml.property  name="codEndereco"
 	 */
 	@Id
-	@GeneratedValue
-	private Integer codEndereco;
+	private int codEndereco;
 
 	/**
 	 * @uml.property  name="cep"
@@ -74,7 +66,7 @@ public class Endereco implements Serializable {
 	 * @return
 	 * @uml.property  name="codEndereco"
 	 */
-	public Integer getCodEndereco() {
+	public int getCodEndereco() {
 		return this.codEndereco;
 	}
 
@@ -82,7 +74,7 @@ public class Endereco implements Serializable {
 	 * @param codEndereco
 	 * @uml.property  name="codEndereco"
 	 */
-	public void setCodEndereco(Integer codEndereco) {
+	public void setCodEndereco(int codEndereco) {
 		this.codEndereco = codEndereco;
 	}
 

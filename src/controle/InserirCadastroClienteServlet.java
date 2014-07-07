@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import servico.ClienteServico;
 import dominio.Usuario;
+import servico.ClienteServico;
 
 @WebServlet("/InserirCadastroClienteServlet")
 public class InserirCadastroClienteServlet extends HttpServlet {
@@ -37,21 +37,20 @@ public class InserirCadastroClienteServlet extends HttpServlet {
 		rd.forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 		try {
-			Usuario usuar = instanciar(request);
-			clienteservico.inserir(usuar);
-
+				Usuario usuar = instanciar(request);
+				clienteservico.inserir(usuar);
 		} catch (Throwable e) {
 			e.printStackTrace();
 			throw new ServletException("Erro no post" + e.getMessage());
 
 		}
-
-		RequestDispatcher rd = request.getRequestDispatcher("/endereco.jsp");
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/carrinho.jsp");
 		rd.forward(request, response);
 	}
+	
 
 	private Usuario instanciar(HttpServletRequest req) throws ParseException {
 		String auxiliar;
@@ -60,34 +59,38 @@ public class InserirCadastroClienteServlet extends HttpServlet {
 		try {
 
 			auxiliar = req.getParameter("codUsuario");
+
 			if (auxiliar != null && auxiliar.isEmpty())
 				usuar.setCodUsuario(Integer.parseInt(auxiliar));
 
 			auxiliar = req.getParameter("nome");
 			usuar.setNome(auxiliar);
-
+			
 			auxiliar = req.getParameter("email");
 			usuar.setEmail(auxiliar);
-
+			
 			auxiliar = req.getParameter("senha");
 			usuar.setSenha(auxiliar);
-
+			
+			
+			
 			auxiliar = req.getParameter("dtnasc");
 			usuar.setDatNascimento(sdf.parse(auxiliar));
-
+			
 			auxiliar = req.getParameter("renda");
 			usuar.setRenda(Float.parseFloat(auxiliar));
-
+			
+			
 			auxiliar = req.getParameter("ativo");
 			usuar.setAtivo(Boolean.parseBoolean(auxiliar));
-
+			
+			
 		} catch (Throwable e) {
 			e.printStackTrace();
-			throw new ParseException("Erro ao cadastrar um Usuï¿½rio!", 0);
+			throw new ParseException("Erro ao cadastrar um Usuário!", 0);
 
 		}
-
+		
 		return usuar;
 	}
-
 }

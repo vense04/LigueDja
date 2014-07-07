@@ -20,7 +20,7 @@
 <body>
 	<%@ include file="/Template/header.jsp"%>
 	<article id="basket">
-	<button class="continue" onclick="parent.location.href='pagamento/Pedido'">Finalizar Compra</button>
+	<button class="continue" onclick="parent.location.href='Pedido'">Finalizar Compra</button>
 	<h1>Carrinho de Compra</h1>
 	<table width="100" border="1">
 		<tr>
@@ -62,7 +62,7 @@
 		</p>
 		<strong>Total</strong> <em id="total"><fmt:formatNumber value="${sessionScope.carrinho.valorTotal()}" type="currency"/></em>
 	</div>
-	<button class="continue" onclick="parent.location.href='pagamento/Pedido'">Finalizar Compra</button>
+	<button class="continue" onclick="parent.location.href='Pedido'">Finalizar Compra</button>
 	</article>
 
 	<%@ include file="/Template/footer.jsp"%>

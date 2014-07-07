@@ -56,11 +56,11 @@
 			}
 			
 			.paypal label {
-				background-image: url(../images/paypal.png);
+				background-image: url(images/paypal.png);
 			}
 			
 			.pagSeguro label {
-				background-image: url(../images/pagSeguro.png);
+				background-image: url(images/pagSeguro.png);
 			}
 			
 			.logos input:focus + label {
@@ -78,7 +78,7 @@
 			}
 			
 			.logos input:checked + label:after {
-			  background: url(../images/checked.png);
+			  background: url(images/checked.png);
 			  bottom: -10px;
 			  content: "";
 			  display: inline-block;
@@ -96,26 +96,14 @@
 	<button class="continue" onclick="parent.location.href='Pedido'">Finalizar Compra</button>
 	<h1>Métodos de pagamento</h1>
 	<ul class="logos">
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-	<input type="hidden" name="cmd" value="_xclick">
-	<input type="hidden" name="business" value="rodrigofonsecajr@gmail.com">
-	<input type="hidden" name="lc" value="BR">
-	<c:if test="${sessionScope.carrinho.quantidadeProdutos() > 1}">
-		<input type="hidden" name="item_name" value="Vários itens">
-	</c:if>
-	<c:if test="${sessionScope.carrinho.quantidadeProdutos() == 1}">
-		<input type="hidden" name="item_name" value="${sessionScope.carrinho.getItens().get(0).produto.nomProduto}">
-	</c:if>
-	<input type="hidden" name="amount" value="${sessionScope.carrinho.valorTotal()}">
-	<input type="hidden" name="currency_code" value="BRL">
-	<input type="hidden" name="button_subtype" value="services">
-	<input type="hidden" name="no_note" value="0">
-	<input type="hidden" name="cn" value="Adicionar instruções especiais para o vendedor">
-	<input type="hidden" name="no_shipping" value="2">
-	<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
-	<input type="image" src="../images/paypal.png" border="0" name="submit" alt="PayPal - A maneira mais fácil e segura de efetuar pagamentos online!">
-	<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
-</form>
+		<li class="logo paypal">
+			<input name="logo" value="paypal" required="required" type="radio" id="paypal">
+			<label for="paypal">Pague com PayPal</label>
+		</li>
+		<li class="logo pagSeguro">
+			<input name="logo" value="pagSeguro" required="required" type="radio" id="pagSeguro" checked="checked">
+			<label for="pagSeguro">Pague com Pague Seguro</label>
+		</li>
 	</ul>
 	<div class="right">
 		<strong>Subtotal (Sem custos de envio)</strong> <em id="subTotal"><fmt:formatNumber value="${sessionScope.carrinho.valorTotal()}" type="currency"/></em><br />
