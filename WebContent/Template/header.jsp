@@ -49,9 +49,16 @@
         	<input type="text" placeholder="Search LigueDjá..." /><button type="submit">Search</button>
         </form>
         <div id="action-bar">
-        	<a href="${pageContext.request.contextPath}/login.jsp"> Login/Registre-se</a> // 
-        	<a href="${pageContext.request.contextPath}/Carrinho">Meu Carrinho <span id="itensCarrinho">${sessionScope.carrinho.quantidadeProdutos()}</span></a> // 
-        	<a href="<c:url value="/j_spring_security_logout" />" title="Fazer logout">Logout</a> // 
+        	<a href="login.jsp"> Login/Registre-se</a> // 
+        	<a href="Carrinho">Meu Carrinho <span id="itensCarrinho">${sessionScope.carrinho.quantidadeProdutos()}</span></a> // 
+        	<% 
+			 	String login = org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication().getName(); 
+			 	if (!login.equals("anonymousUser")) { 
+			 %> 
+        	
+        	<a href="<c:url value="/j_spring_security_logout" />" title="Fazer logout"><%=login %> : Sair</a> // 
+        	
+        	<%} %>
 			<a href="administrativo/admin.jsp">Administrativo</a> 
 		</div>
     </div>
