@@ -62,14 +62,18 @@
     <ul id="items">
      <c:forEach items="${produtos}" begin="${(param.inicio == null)? 0 : param.inicio}" end="${(param.fim == null)? 9 : param.fim}" var="produto">
 	     <li>
-	            <a href="Detalhes?produto=${produto.codProduto}"><img src="${produto.thumb}" width="170" height="259"
+	            <a href="Detalhes?produto=${produto.codProduto}"><img src="images/thumb.png"
 					alt="${produto.nomProduto} - ${produto.descricao}" /></a> <a href="detalhes.jsp" class="title">${produto.nomProduto}</a>
 	            <strong><fmt:formatNumber value="${produto.preco}" type="currency"/></strong>
 	      </li>
 	 </c:forEach>
     </ul>
     
-
+    <footer>
+        <div class="paging">
+            Page: <a onclick="javascript:return getPage(1);" href="">1</a>&nbsp; | &nbsp;2&nbsp; | &nbsp;<a onclick="javascript:return getPage(3);" href="">3</a>  |  <a onclick="javascript:return getPage('', '', '1');" href="">View All</a>
+        </div>
+    </footer>
 </article>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript">

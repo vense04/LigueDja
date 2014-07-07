@@ -5,9 +5,6 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import com.sun.org.apache.regexp.internal.recompile;
-
-import dao.EnderecoDao;
 import dao.UsuarioDao;
 import dominio.Usuario;
 

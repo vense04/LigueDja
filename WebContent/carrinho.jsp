@@ -31,7 +31,7 @@
 		<c:forEach items="${sessionScope.carrinho.getItens()}" var="item">
 			<tr id="${item.produto.codProduto}">
 				<td align="left" valign="top" class="description"><a
-					href="Detalhes?produto=${item.produto.codProduto}"><img src="${item.produto.thumb}"
+					href="Detalhes?produto=${item.produto.codProduto}"><img src="images/thumb1.jpg"
 						alt="${item.produto.nomProduto} - ${item.produto.descricao}" class="left" /></a>
 					<p>
 						<a href="Detalhes?produto=${item.produto.codProduto}">${item.produto.nomProduto}</a><br />${item.produto.descricao}

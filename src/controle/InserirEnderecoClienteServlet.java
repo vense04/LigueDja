@@ -36,19 +36,20 @@ public class InserirEnderecoClienteServlet extends HttpServlet {
 		if (cmd.equalsIgnoreCase("inserir")) {
 			forward = INSERIR_ENDERECO;
 		}
+		
 
 		RequestDispatcher rd = request.getRequestDispatcher(forward);
 		rd.forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		try {
-
+			
+		
 			Endereco end = instanciar2(request);
 			enderecoServico.inserir(end);
-
+			
 		} catch (Throwable e) {
 			e.printStackTrace();
 			throw new ServletException("Erro no post" + e.getMessage());
@@ -66,12 +67,13 @@ public class InserirEnderecoClienteServlet extends HttpServlet {
 
 		Endereco end = new Endereco();
 		try {
-			auxiliar2 = req.getParameter("codEndereco");
 
+			auxiliar2 = req.getParameter("codEndereco");
+			
 			if (auxiliar2 != null && auxiliar2.isEmpty())
 				end.setCodEndereco(Integer.parseInt(auxiliar2));
-			auxiliar3 = clienteservico.getLastId();
-
+			auxiliar3=clienteservico.getLastId();
+			
 			end.setUsuario(clienteservico.carregar(auxiliar3));
 			auxiliar2 = req.getParameter("logradouro");
 			end.setLogradouro(auxiliar2);

@@ -6,7 +6,7 @@
 		
 		
 		
-		<a href="<%=request.getContextPath()%>/entrada.jsp" class="btn btn-danger btn-lg" role="button">
+		<a href="<%=request.getContextPath()%>/administrativo/entrada/entrada.jsp" class="btn btn-danger btn-lg" role="button">
 		<span class="glyphicon glyphicon-fileglyphicon glyphicon-file"></span> <br />Relatório das Entradas</a> 
 		
 		<a href="" class="btn btn-warning btn-lg" role="button">
