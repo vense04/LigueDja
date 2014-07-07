@@ -31,11 +31,7 @@
 
     </div>
     <div id="images">
-    	<a href="images/main.jpg"><img src="images/main.jpg"></a>
-        <span class="sale">SUPER DESCONTO</span>
-        <div id="productthumbs">
-            <a href="#"><img src="images/thumb1.jpg" /></a><a href="#"><img src="images/thumb2.jpg" /></a><a href="#"><img src="images/thumb3.jpg" /></a>
-        </div>
+    	<a href="${produto.imagem }"><img src="${produto.imagem }" width="438" height="668"></a>
     </div>
 </article>
 

@@ -8,9 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import dao.ProdutoDao;
@@ -19,14 +17,12 @@ import dao.ProdutoDao;
 
 @Entity
 @Table(name="TAB_PRODUTO")
-@NamedQuery(name="Produto.findAll", query="SELECT t FROM Produto t")
 public class Produto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	
 	@Id
 	private Integer codProduto;
-
 	
 	private String descricao;
 
@@ -38,6 +34,9 @@ public class Produto implements Serializable {
 	
 	
 	private String nomProduto;
+	
+	private String imagem;
+	private String thumb;
 
 	@OneToMany(mappedBy="produto")
 	private List<ItemPedido> itemPedidos;
@@ -184,6 +183,26 @@ public class Produto implements Serializable {
 		this.nomProduto = nomProduto;
 	}
 	
+	
+	
+	
+	
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
+
+	public String getThumb() {
+		return thumb;
+	}
+
+	public void setThumb(String thumb) {
+		this.thumb = thumb;
+	}
+
 	/**
 	 * Lista todos os produtos na base de dados
 	 * @return List<Produto>

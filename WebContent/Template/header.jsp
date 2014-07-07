@@ -45,9 +45,9 @@
             <li><a href="#" class="facebook" title="like us us on Facebook">like us us on Facebook</a></li>
             <li><a href="#" class="twitter" title="follow us on twitter">follow us on twitter</a></li>
         </ul>
-        <form>
-        	<input type="text" placeholder="Search LigueDjá..." /><button type="submit">Search</button>
-        </form>
+<!--         <form> -->
+<!--         	<input type="text" placeholder="Search LigueDjá..." /><button type="submit">Search</button> -->
+<!--         </form> -->
         <div id="action-bar">
         	<a href="login.jsp"> Login/Registre-se</a> // 
         	<a href="Carrinho">Meu Carrinho <span id="itensCarrinho">${sessionScope.carrinho.quantidadeProdutos()}</span></a> // 
