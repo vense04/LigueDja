@@ -8,7 +8,6 @@
 	<http>
 		<intercept-url pattern="/administrativo/**" access="ROLE_ADMIN" />
 		<intercept-url pattern="/auxiliar/**" access="ROLE_AUXILIAR" />
-		<intercept-url pattern="/pagamento/**" access="ROLE_CLIENTE" />
 		<form-login login-page="/login.jsp"
 			always-use-default-target="false" default-target-url="/Home"
 			authentication-failure-url="/login.jsp?erro=1" />

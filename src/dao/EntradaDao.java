@@ -14,6 +14,4 @@ public interface EntradaDao {
 	public Entrada buscaPorCodigo(int cod);
 
 	public List<Entrada> buscaTodos();
-	
-//	public List<Entrada> entradasEntre(String dataInicial, String dataFinal);
 }

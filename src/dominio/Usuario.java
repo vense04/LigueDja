@@ -24,8 +24,7 @@ public class Usuario implements Serializable {
 	 * @uml.property  name="codUsuario"
 	 */
 	@Id
-	@GeneratedValue
-	private Integer codUsuario;
+	private int codUsuario;
 
 	/**
 	 * @uml.property  name="datNascimento"
@@ -46,7 +45,7 @@ public class Usuario implements Serializable {
 	/**
 	 * @uml.property  name="renda"
 	 */
-	private Float renda;
+	private float renda;
 
 	/**
 	 * @uml.property  name="senha"
@@ -100,7 +99,7 @@ public class Usuario implements Serializable {
 	 * @param codUsuario
 	 * @uml.property  name="codUsuario"
 	 */
-	public void setCodUsuario(Integer codUsuario) {
+	public void setCodUsuario(int codUsuario) {
 		this.codUsuario = codUsuario;
 	}
 

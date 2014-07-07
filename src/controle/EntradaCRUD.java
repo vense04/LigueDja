@@ -16,24 +16,23 @@ import servico.EntradaServico;
 import servico.ProdutoServico;
 import dominio.Entrada;
 
-/**
- * Servlet implementation class EntradaCRUD
- */
-@WebServlet("/administrativo/entrada/EntradaCRUD")
+@WebServlet("/administrativo/EntradaCRUD")
 public class EntradaCRUD extends HttpServlet {
+	
+	@Inject
+	ProdutoServico produtoDao;
+	
 	private static final long serialVersionUID = 1L;
 
-	private static String INSERIR_OU_ALTERAR = "/administrativo/entrada/entradaForm.jsp";
-	private static String LISTAR = "/administrativo/entrada/entradaListar.jsp";
+	private static String INSERIR_OU_ALTERAR = "/administrativo/Template/cadastrarEntrada.jsp";
+	private static String LISTAR = "/administrativo/admin.jsp";
 
 	@Inject
 	private EntradaServico entradaServico;
 
-	@Inject
-	private ProdutoServico produtoServico;
-
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+
 		String forward = "";
 		String cmd = request.getParameter("cmd");
 		if (cmd == null || cmd.equalsIgnoreCase(""))
@@ -48,8 +47,8 @@ public class EntradaCRUD extends HttpServlet {
 
 		else if (cmd.equalsIgnoreCase("editar")) {
 			int cod = Integer.parseInt(request.getParameter("cod"));
-			Entrada entr = entradaServico.carregar(cod);
-			request.setAttribute("entr", entr);
+			Entrada entrada = entradaServico.carregar(cod);
+			request.setAttribute("entrada", entrada);
 			forward = INSERIR_OU_ALTERAR;
 		}
 
@@ -64,18 +63,19 @@ public class EntradaCRUD extends HttpServlet {
 
 		RequestDispatcher rd = request.getRequestDispatcher(forward);
 		rd.forward(request, response);
-
 	}
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
 		try {
-			Entrada entr = instanciar(request);
-			if (entr.getCodEntrada() == null) {
-				entradaServico.inserir(entr);
+			Entrada entrada = instanciar(request);
+			if (entrada.getCodEntrada() == null) {
+				System.out.println("entrada");
+				entradaServico.inserir(entrada);
 			} else {
-				entradaServico.atualizar(entr);
+				System.out.println("atualizar");
+				entradaServico.atualizar(entrada);
 			}
 			RequestDispatcher rd = request.getRequestDispatcher(LISTAR);
 			request.setAttribute("lista", entradaServico.listarEntradas());
@@ -84,31 +84,27 @@ public class EntradaCRUD extends HttpServlet {
 			e.printStackTrace();
 			throw new ServletException("Erro no post" + e.getMessage());
 		}
-
 	}
 
 	private Entrada instanciar(HttpServletRequest req) throws ParseException {
 		String aux;
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Entrada entr = new Entrada();
+		Entrada entrada = new Entrada();
 		try {
 			aux = req.getParameter("codEntrada");
-			if (aux != null && !aux.isEmpty())
-				entr.setCodEntrada(Integer.parseInt(aux));
-
-			aux = req.getParameter("codProduto");
-			entr.setProduto(produtoServico.getProduto(Integer.parseInt(aux)));
-
-			aux = req.getParameter("data");
-			entr.setData(sdf.parse(aux));
+			if (aux!=null && !aux.isEmpty())
+				entrada.setCodEntrada(Integer.parseInt(aux));
 			
-			aux = req.getParameter("quantidade");
-			entr.setQuantidade(Integer.parseInt(aux));
+			entrada.setProduto(produtoDao.getProduto(Integer.parseInt(req.getParameter("codProduto"))));
+			entrada.setData(sdf.parse(req.getParameter("data")));
+			entrada.setQuantidade(Integer.parseInt(req.getParameter("quantidade")));
+			
+			System.out.println(entrada.getProduto().getNomProduto() + "------------");
+			
 		} catch (Throwable e) {
 			e.printStackTrace();
-			throw new ParseException("Erro ao instanciar a entrada!", 0);
+			throw new ParseException("Erro ao instanciar um entrada!", 0);
 		}
-		return entr;
+		return entrada;
 	}
-	
 }

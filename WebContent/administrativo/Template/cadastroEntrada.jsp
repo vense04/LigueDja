@@ -51,7 +51,7 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for=""></label>
 					<div class="col-md-8">
-						<button id="" name="" class="btn btn-success" type="submit">Cadastrar</button>
+						<button id="" name="" class="btn btn-success">Cadastrar</button>
 						<button id="" name="" class="btn btn-danger" type="reset">Limpar</button>
 					</div>
 				</div>

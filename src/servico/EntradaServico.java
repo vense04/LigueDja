@@ -19,11 +19,6 @@ public class EntradaServico {
 	public List<Entrada> listarEntradas() {
 		return entradaDao.buscaTodos();
 	}
-
-//	public List<Entrada> entradasEntre(String dataInicial, String dataFinal) {
-//		return entradaDao.entradasEntre(dataInicial, dataFinal);
-//	}
-
 	public Entrada carregar(int cod) {
 		return entradaDao.buscaPorCodigo(cod);
 	}
@@ -31,8 +26,8 @@ public class EntradaServico {
 	public void deletar(int cod) throws RuntimeException {
 		try {
 			em.getTransaction().begin();
-			Entrada entr = entradaDao.buscaPorCodigo(cod);
-			entradaDao.remover(entr);
+			Entrada entrada = entradaDao.buscaPorCodigo(cod);
+			entradaDao.remover(entrada);
 			em.getTransaction().commit();
 		} catch (Throwable e) {
 			if (em.getTransaction().isActive())
@@ -42,10 +37,10 @@ public class EntradaServico {
 		}
 	}
 
-	public void inserir(Entrada entr) throws RuntimeException {
+	public void inserir(Entrada entrada) throws RuntimeException {
 		try {
 			em.getTransaction().begin();
-			entradaDao.inserir(entr);
+			entradaDao.inserir(entrada);
 			em.getTransaction().commit();
 		} catch (Throwable e) {
 			if (em.getTransaction().isActive())
@@ -55,10 +50,10 @@ public class EntradaServico {
 		}
 	}
 
-	public void atualizar(Entrada entr) {
+	public void atualizar(Entrada entrada) {
 		try {
 			em.getTransaction().begin();
-			entradaDao.atualizar(entr);
+			entradaDao.atualizar(entrada);
 			em.getTransaction().commit();
 		} catch (Throwable e) {
 			if (em.getTransaction().isActive())
@@ -67,5 +62,4 @@ public class EntradaServico {
 			throw new RuntimeException("Erro ao atualizar");
 		}
 	}
-
 }

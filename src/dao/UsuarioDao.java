@@ -2,7 +2,6 @@ package dao;
 
 import java.util.List;
 
-
 import dominio.Usuario;
 
 public interface UsuarioDao {
@@ -14,7 +13,5 @@ public interface UsuarioDao {
 	public Usuario buscaPorCodigo(int cod);
 	
 	public List<Usuario> buscaTodos();
-	
-	public List<Usuario> UsuariosEntre(String datInicial, String datFinal);
 
 }

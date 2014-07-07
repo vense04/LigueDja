@@ -23,28 +23,41 @@ import dao.ProdutoDao;
 public class Produto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	
+	/**
+	 * @uml.property  name="codProduto"
+	 */
 	@Id
-	private Integer codProduto;
+	private int codProduto;
 
-	
+	/**
+	 * @uml.property  name="descricao"
+	 */
 	private String descricao;
 
-	
+	/**
+	 * @uml.property  name="preco"
+	 */
 	private float preco;
 
-	
+	/**
+	 * @uml.property  name="qteEstoque"
+	 */
 	private int qteEstoque;
 	
-	
+	/**
+	 * @uml.property  name="nomProduto"
+	 */
 	private String nomProduto;
 
+	//bi-directional many-to-one association to TabItemPedido
+	/**
+	 * @uml.property  name="tabItemPedidos"
+	 * @uml.associationEnd  multiplicity="(0 -1)" inverse="tabProduto:model.TabItemPedido"
+	 */
 	@OneToMany(mappedBy="produto")
 	private List<ItemPedido> itemPedidos;
-	
-	@OneToMany(mappedBy="produto")
-	private List<Entrada> entradas;
 
+	//bi-directional many-to-one association to TabCategoria
 	/**
 	 * @uml.property  name="tabCategoria"
 	 * @uml.associationEnd  inverse="tabProdutos:model.TabCategoria"
@@ -56,7 +69,8 @@ public class Produto implements Serializable {
 	@Inject
 	private static ProdutoDao produtoDao;
 
-	public Produto() {}
+	public Produto() {
+	}
 
 	/**
 	 * @return
@@ -64,22 +78,6 @@ public class Produto implements Serializable {
 	 */
 	public int getCodProduto() {
 		return this.codProduto;
-	}
-
-	public List<Entrada> getEntradas() {
-		return entradas;
-	}
-
-	public void setEntradas(List<Entrada> entradas) {
-		this.entradas = entradas;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	public void setCodProduto(Integer codProduto) {
-		this.codProduto = codProduto;
 	}
 
 	/**

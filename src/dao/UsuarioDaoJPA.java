@@ -6,7 +6,6 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-
 import dominio.Usuario;
 
 public class UsuarioDaoJPA implements UsuarioDao {
@@ -29,23 +28,11 @@ public class UsuarioDaoJPA implements UsuarioDao {
 	
 	@SuppressWarnings("unchecked")
 	public List<Usuario> buscaTodos() {
-		String s = "SELECT u FROM Usuario u";
-				
+		String s = "SELECT U.nome FROM TAB_USUARIO U "
+				+ "INNER JOIN TAB_USUARIO_PERMISSAO UP"
+				+  "ON U.codUsuario = UP.codUsuario WHERE UP.permissao = ROLE_CLIENTE AND U.ativo = 1";
 		Query query = em.createQuery(s);
 		return query.getResultList();
-	}
-
-
-	@Override
-	@SuppressWarnings("unchecked")
-	public List<Usuario> UsuariosEntre(String datInicial, String datFinal) {
-		String consulta = "SELECT u from Usuario u where u.datInicial >= :arg1 AND u.datFinal <= :arg2";
-		Query query = em.createQuery(consulta);
-		query.setParameter("arg1", datInicial);
-		query.setParameter("arg2", datFinal);
-		List<Usuario> lista = query.getResultList();
-		return lista;
-		
 	}
 	
 	

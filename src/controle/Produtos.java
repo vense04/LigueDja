@@ -42,23 +42,14 @@ public class Produtos extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher rd;
-		if (request.getParameter("categoria") != null ||
-			request.getParameter("ordem") != null) {
-			
-			Categoria categoriaDominio = (request.getParameter("categoria") != null) ? categoria.buscaPorCodigo(Integer.parseInt(request.getParameter("categoria"))) : null;
-			String ordem = request.getParameter("ordem");
-
-				request.setAttribute("produtos", produto.listaProdutosPorCategoriaOrdenada(categoriaDominio, ordem));
-				rd = request.getRequestDispatcher("produtos.jsp");
-				rd.forward(request, response);
-			
-			
-
+		if (request.getParameter("categoria") != null) {
+			request.setAttribute("produtos", produto.listaProdutosPorCategoria(categoria.buscaPorCodigo(Integer.parseInt(request.getParameter("categoria")))));
+			RequestDispatcher rd = request.getRequestDispatcher("produtos.jsp");
+			rd.forward(request, response);
 		}
 		else {
 			request.setAttribute("produtos", produto.listaTodosProdutos());
-			rd = request.getRequestDispatcher("produtos.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("produtos.jsp");
 			rd.forward(request, response);
 		}
 	}

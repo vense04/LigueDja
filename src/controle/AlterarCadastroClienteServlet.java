@@ -20,7 +20,7 @@ import dominio.Usuario;
 public class AlterarCadastroClienteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static String ALTERAR_CLIENTE = "/cliente/atualizarCadastro.jsp";
+	private static String ALTERAR_CLIENTE = "/listarCadastro.jsp";
 
 	@Inject
 	private ClienteServico clienteservico;
@@ -36,22 +36,8 @@ public class AlterarCadastroClienteServlet extends HttpServlet {
 			Usuario usuar = clienteservico.carregar(cod);
 			System.out.println("usuario="+usuar.getNome());
 			request.setAttribute("us", usuar);
-			RequestDispatcher rd = request.getRequestDispatcher(ALTERAR_CLIENTE);
+			RequestDispatcher rd = request.getRequestDispatcher("/listarCadastro.jsp");
 			rd.forward(request, response);
-			
-		}else if(cmd.equalsIgnoreCase("atualizar")){
-			try {
-				
-				Usuario usuar = instanciar(request);
-				clienteservico.editar(usuar);
-				
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			RequestDispatcher rd = request.getRequestDispatcher("/carrinho.jsp");
-			rd.forward(request, response);	
-			
 		}
 	}
 
@@ -61,11 +47,10 @@ public class AlterarCadastroClienteServlet extends HttpServlet {
 			Usuario usuar = instanciar(request);
 			if(usuar.getCodUsuario()!=null)
 			clienteservico.editar(usuar);
-			System.out.println(usuar);
 
 		} catch (Throwable e) {
 			e.printStackTrace();
-			throw new ServletException("Erro no post " + e.getMessage());
+			throw new ServletException("Erro no post" + e.getMessage());
 
 		}
 
@@ -77,11 +62,14 @@ public class AlterarCadastroClienteServlet extends HttpServlet {
 	private Usuario instanciar(HttpServletRequest req) throws ParseException {
 		String auxiliar;
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		auxiliar = req.getParameter("codUsuario");
-		int cod = Integer.parseInt(auxiliar);
-		Usuario usuar = clienteservico.carregar(cod);
+		Usuario usuar = new Usuario();
 		try {
 
+			auxiliar = req.getParameter("codUsuario");
+			usuar.setCodUsuario(Integer.parseInt(auxiliar));
+
+			
+			
 			auxiliar = req.getParameter("nome");
 			usuar.setNome(auxiliar);
 
@@ -97,9 +85,12 @@ public class AlterarCadastroClienteServlet extends HttpServlet {
 			auxiliar = req.getParameter("renda");
 			usuar.setRenda(Float.parseFloat(auxiliar));
 
+			auxiliar = req.getParameter("ativo");
+			usuar.setAtivo(Boolean.parseBoolean(auxiliar));
+
 		} catch (Throwable e) {
 			e.printStackTrace();
-			throw new ParseException("Erro ao atualizar um Usuário!", 0);
+			throw new ParseException("Erro ao cadastrar um Usuário!", 0);
 
 		}
 

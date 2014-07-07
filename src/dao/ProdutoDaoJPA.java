@@ -6,8 +6,6 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import dominio.Categoria;
-import dominio.ItemPedido;
-import dominio.Pedido;
 import dominio.Produto;
 
 public class ProdutoDaoJPA implements ProdutoDao {
@@ -49,43 +47,6 @@ public class ProdutoDaoJPA implements ProdutoDao {
 						+ " p WHERE p.categoria = "
 						+ categoria.getCodCategoria()
 						+ " ORDER BY p.codProduto").getResultList();
-	}
-
-	@Override
-	public List<Produto> buscaTodosPorCategoriaOrdenada(Categoria categoria,
-			String ordem) {
-		
-		String categoriaSql = (categoria != null) ? " WHERE p.categoria = " + categoria.getCodCategoria() : "";
-		
-		String sql = "SELECT p FROM " + Produto.class.getName()
-				+ " p";
-		
-		String ordenacao = "";
-		if (ordem != null) {
-			ordenacao = " ORDER BY ";
-			if (ordem.equalsIgnoreCase("maiorPreco")) {
-				ordenacao += "p.preco DESC";
-			}
-			else if (ordem.equalsIgnoreCase("menorPreco")) {
-				ordenacao +=  "p.preco";
-			}
-			else if (ordem.equalsIgnoreCase("popularidade")) {
-				ordenacao = ", " + ItemPedido.class.getName() + " IP "
-						+ 	", " + Pedido.class.getName() + " PED "
-						+ 	"WHERE "
-						+ 	"	PED.codPedido = IP.codPedido "
-						+ 	"AND "
-						+ 	"	PED.datPagamento != NULL "
-						+	"AND "
-						+ 	"	IP.produto = P.codProduto "
-						+ 	"GROUP BY "
-						+ 	"	P.codProduto "
-						+ 	"ORDER BY "
-						+ 	"	IP.quantidade DESC";
-			}
-		}
-		System.out.println(sql+categoriaSql+ordenacao);
-		return em.createQuery(sql+categoriaSql+ordenacao).getResultList();
 	}
 
 }
