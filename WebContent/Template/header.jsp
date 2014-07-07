@@ -4,37 +4,17 @@
         <nav>
             <ul>
                 <li>
-                  <a href="Produtos">Categorias</a>
-                  <ul class="sub-menu">
+                  	<ul class="sub-menu">
                  		 <c:forEach items="${sessionScope.categorias}" var="categoria">
                     		<li><a href="Produtos?categoria=${categoria.codCategoria}">${categoria.nomCategoria}</a></li>
                     	</c:forEach>
                     </ul>
                 </li>
-                <li><a href="produtos.jsp">Trousers</a></li>
-                <li>
-                	<a href="produtos.jsp">Dresses</a>
-                    <ul class="sub-menu">
-                        <li><a href="produtos.jsp">Bridal dress</a></li>
-                        <li><a href="produtos.jsp">Cocktail dress</a></li>
-                        <li><a href="produtos.jsp">Maxi dress</a></li>
-                        <li><a href="produtos.jsp">Shift dress</a></li>
-                        <li><a href="produtos.jsp">Warp dress</a></li>
-                    </ul>
-                </li>
-                <li><a href="produtos.jsp">Skirts</a></li>
-                <li>
-                    <a href="produtos.jsp">Accessories</a>
-                    <ul class="sub-menu">
-                        <li><a href="produtos.jsp">Hats</a></li>
-                        <li><a href="produtos.jsp">Bags</a></li>
-                        <li><a href="produtos.jsp">Scarves</a></li>
-                        <li><a href="produtos.jsp">Jewellery</a></li>
-                        <li><a href="produtos.jsp">Gloves</a></li>
-                    </ul>
-                </li>
-                <li><a href="produtos.jsp">Coats &amp; Jackets </a></li>
-                <li><a href="produtos.jsp">Brands</a></li>
+                
+               	 <c:forEach items="${sessionScope.categorias}" var="categoria">
+                    		<li><a href="Produtos?categoria=${categoria.codCategoria}">${categoria.nomCategoria}</a></li>
+                    	</c:forEach>
+               
           </ul>
         </nav>
     </div>
@@ -42,8 +22,8 @@
 <aside id="top">
 	<div class="wrapper">
         <ul id="social">
-            <li><a href="#" class="facebook" title="like us us on Facebook">like us us on Facebook</a></li>
-            <li><a href="#" class="twitter" title="follow us on twitter">follow us on twitter</a></li>
+            <li><a href="http://www.facebook.com" class="facebook" title="like us us on Facebook">like us us on Facebook</a></li>
+            <li><a href="http://www.twitter.com" class="twitter" title="follow us on twitter">follow us on twitter</a></li>
         </ul>
 <!--         <form> -->
 <!--         	<input type="text" placeholder="Search LigueDjá..." /><button type="submit">Search</button> -->
