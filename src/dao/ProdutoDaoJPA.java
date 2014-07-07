@@ -71,9 +71,9 @@ public class ProdutoDaoJPA implements ProdutoDao {
 			}
 			else if (ordem.equalsIgnoreCase("popularidade")) {
 				ordenacao = ", " + ItemPedido.class.getName() + " IP "
-						+ 	", " + Pedido.class.getName() + " PED "
-						+ 	"WHERE "
-						+ 	"	PED.codPedido = IP.codPedido "
+						+ 	", " + Pedido.class.getName() + " PED ";
+				
+				String ordenacaoWhere = "	PED.codPedido = IP.codPedido "
 						+ 	"AND "
 						+ 	"	PED.datPagamento != NULL "
 						+	"AND "
@@ -82,6 +82,7 @@ public class ProdutoDaoJPA implements ProdutoDao {
 						+ 	"	P.codProduto "
 						+ 	"ORDER BY "
 						+ 	"	IP.quantidade DESC";
+				ordenacao += (categoriaSql.equalsIgnoreCase("")) ? " WHERE " + ordenacaoWhere : ordenacaoWhere;
 			}
 		}
 		System.out.println(sql+categoriaSql+ordenacao);

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import servico.CategoriaServico;
+import servico.ClienteServico;
 import dao.CategoriaDao;
 import dominio.Categoria;
 
@@ -27,6 +28,9 @@ public class Principal extends HttpServlet {
 	
 	@Inject
 	dominio.Carrinho carrinho;
+	
+	@Inject
+	private ClienteServico cliente;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -43,6 +47,8 @@ public class Principal extends HttpServlet {
 
 		
 		HttpSession sessao = request.getSession(false);
+		
+		System.out.println(cliente.getLastId() + " -> Ultimo Cliente");
 		
 		if (sessao == null) {
 			sessao = request.getSession(true);
